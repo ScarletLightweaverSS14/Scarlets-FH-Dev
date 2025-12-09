@@ -24,12 +24,12 @@
   id: CMOBackpack
   name: loadout-group-cmo-backpack
   loadouts:
-    - ChemistBackpack
-    - ChemistSatchel
-    - ChemistDuffel
     - MedicalDoctorBackpack
-    - MedicalDoctorSatchel
     - MedicalDoctorDuffel
+    - MedicalDoctorSatchel
+    - ChemistBackpack
+    - ChemistDuffel
+    - ChemistSatchel
     - ParamedicBackpack
     - ParamedicDuffel
     - ParamedicSatchel
@@ -111,8 +111,8 @@
   name: loadout-group-doctor-backpack
   loadouts:
     - MedicalDoctorBackpack
-    - MedicalDoctorSatchel
     - MedicalDoctorDuffel
+    - MedicalDoctorSatchel
     - VirologyBackpack
     - VirologyDuffel
     - VirologySatchel
@@ -239,7 +239,6 @@
 - type: loadoutGroup
   id: ParamedicBackpack
   name: loadout-group-paramedic-backpack
-  minLimit: 0
   loadouts:
     - ParamedicBackpack
     - ParamedicDuffel
@@ -265,3 +264,68 @@
     - VirologyBackpack
     - VirologyDuffel
     - VirologySatchel
+
+#Surgeon
+
+- type: loadoutGroup
+  id: SurgeonHead
+  name: loadout-group-Surgeon-head
+  minLimit: 0
+  loadouts:
+  - MedicalBeret
+  - SeniorPhysicianBeret
+  - MedicalHeadMirror
+  - BlueSurgeryCap
+  - GreenSurgeryCap
+  - PurpleSurgeryCap
+
+- type: loadoutGroup
+  id: SurgeonJumpsuit
+  name: loadout-group-Surgeon-jumpsuit
+  loadouts:
+  - MedicalBlueScrubs
+  - MedicalGreenScrubs
+  - MedicalPurpleScrubs
+
+- type: loadoutGroup
+  id: SurgeonOuterClothing
+  name: loadout-group-Surgeon-outerclothing
+  minLimit: 0
+  loadouts:
+  - RegularLabCoat
+  - WindbreakerMedical
+
+- type: loadoutGroup
+  id: SurgeonBackpack
+  name: loadout-group-Surgeon-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorDuffel
+  - MedicalDoctorSatchel
+  - LeatherSatchel
+
+- type: loadoutGroup
+  id: SurgeonShoes
+  name: loadout-group-Surgeon-shoes
+  loadouts:
+  - WhiteShoes
+  - MedicalWinterBoots
+  - Heels
+  - LaceupShoes
+  - LeatherShoes
+
+- type: loadoutGroup
+  id: SurgeonPDA
+  name: loadout-group-Surgeon-id
+  loadouts:
+  - SurgeonPDA
+  - SeniorSurgeonPDA
+
+- type: loadoutGroup
+  id: SurgeonEquipmentGroup
+  name: loadout-group-Surgeon-equipment
+  minLimit: 1
+  loadouts:
+  - SurgeonDuffel
+  - SurgeonEquipment
+

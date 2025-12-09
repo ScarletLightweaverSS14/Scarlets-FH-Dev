@@ -100,15 +100,15 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: BoneSaw
-  - type: SurgeryTool
-    speed: 2.3 #FarHorizons
+    speed: 2.3 
     startSound:
       path: /Audio/Effects/chop.ogg
     endSound:
       path: /Audio/Effects/chop.ogg
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   name: spade

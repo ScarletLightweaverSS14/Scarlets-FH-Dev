@@ -2,7 +2,7 @@
   abstract: true
   parent: [ BaseStructure, BaseStructureDissolvable ] # Starlight-edit
   id: BaseStructureWall
-  name: basewall
+  name: BaseWall #Far Horizons - The Great Capitalization Crusade
   description: Keeps the air in and the assistants out.
   placement:
     mode: SnapgridCenter
@@ -101,7 +101,7 @@
 - type: entity
   parent: BaseWall
   id: WallBrick
-  name: brick wall
+  name: Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Pierceable
     level: Metal
@@ -138,7 +138,7 @@
 - type: entity
   parent: BaseWall
   id: WallClock
-  name: clock wall
+  name: Clock Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/clock.rsi
@@ -167,7 +167,7 @@
 - type: entity
   parent: BaseWall
   id: WallClown
-  name: bananium wall
+  name: Bananium Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/clown.rsi
@@ -211,7 +211,7 @@
 - type: entity
   parent: BaseWall
   id: WallMeat
-  name: meat wall
+  name: Meat Wall #Far Horizons - The Great Capitalization Crusade
   description: Sticky.
   components:
   - type: Tag
@@ -245,7 +245,7 @@
 - type: entity
   parent: BaseWall
   id: WallCult
-  name: cult wall
+  name: Cult Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cult.rsi
@@ -271,7 +271,7 @@
 - type: entity
   parent: BaseWall
   id: WallDebug
-  name: debug wall
+  name: Debug Wall #Far Horizons - The Great Capitalization Crusade
   suffix: DEBUG
   components:
   - type: Tag
@@ -302,7 +302,7 @@
 - type: entity
   parent: BaseWall
   id: WallDiamond
-  name: diamond wall
+  name: Diamond Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Ricochetable
     chance: 1
@@ -334,7 +334,7 @@
 - type: entity
   parent: BaseWall
   id: WallGold
-  name: gold wall
+  name: Gold Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/gold.rsi
@@ -387,7 +387,7 @@
 - type: entity
   parent: BaseWall
   id: WallIce
-  name: ice wall
+  name: Ice Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/ice.rsi
@@ -413,7 +413,7 @@
 - type: entity
   parent: BaseWall
   id: WallPlasma
-  name: plasma wall
+  name: Plasma Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/plasma.rsi
@@ -457,7 +457,7 @@
 - type: entity
   parent: BaseWall
   id: WallPlastic
-  name: plastic wall
+  name: Plastic Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Ricochetable
     chance: 0.1
@@ -501,15 +501,15 @@
 - type: entity
   parent: BaseWall
   id: WallPlastitaniumIndestructible
-  name: plastitanium wall
-  suffix: indestructible
+  name: Plastitanium Wall #Far Horizons - The Great Capitalization Crusade
+  suffix: Indestructible #Far Horizons - The Great Capitalization Crusade
   components:
     - type: Ricochetable
       chance: 1
     - type: Sprite
-      sprite: Structures/Walls/plastitanium.rsi
+      sprite: _FarHorizons/Structures/Walls/plastitanium.rsi #Far Horizons
     - type: Icon
-      sprite: Structures/Walls/plastitanium.rsi
+      sprite: _FarHorizons/Structures/Walls/plastitanium.rsi #Far Horizons
     - type: IconSmooth
       key: walls
       base: plastitanium
@@ -533,7 +533,7 @@
 - type: entity
   parent: WallPlastitaniumIndestructible
   id: WallPlastitanium
-  name: plastitanium wall
+  name: Plastitanium Wall #Far Horizons - The Great Capitalization Crusade
   suffix: ""
   components:
     - type: Destructible
@@ -553,8 +553,8 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallPlastitaniumDiagonalIndestructible
-  name: plastitanium wall
-  suffix: diagonal, indestructible
+  name: Plastitanium Wall #Far Horizons - The Great Capitalization Crusade
+  suffix: Diagonal, Indestructible #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -572,8 +572,8 @@
 - type: entity
   parent: WallPlastitaniumDiagonalIndestructible
   id: WallPlastitaniumDiagonal
-  name: plastitanium wall
-  suffix: diagonal
+  name: Plastitanium Wall #Far Horizons - The Great Capitalization Crusade
+  suffix: Diagonal #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -602,7 +602,7 @@
 - type: entity
   parent: BaseWall
   id: WallReinforced
-  name: reinforced wall
+  name: Reinforced Wall [NT] #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Pierceable
     level: HardenedMetal
@@ -676,7 +676,7 @@
 - type: entity
   parent: WallReinforced
   id: WallReinforcedRust
-  suffix: rusted
+  suffix: Rusted #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/solid_rust.rsi
@@ -715,7 +715,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallReinforcedDiagonal
-  name: reinforced wall
+  name: Reinforced Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -756,7 +756,7 @@
 - type: entity
   parent: BaseWall
   id: WallRiveted
-  name: riveted wall
+  name: Riveted Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/riveted.rsi
@@ -787,7 +787,7 @@
 - type: entity
   parent: BaseWall
   id: WallSandstone
-  name: sandstone wall
+  name: Sandstone Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/sandstone.rsi
@@ -817,7 +817,7 @@
 - type: entity
   parent: BaseWall
   id: WallSilver
-  name: silver wall
+  name: Silver Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/silver.rsi
@@ -860,7 +860,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallShuttleDiagonal
-  name: shuttle wall
+  name: Shuttle Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -929,7 +929,7 @@
 - type: entity
   parent: BaseWall
   id: WallShuttle
-  name: shuttle wall
+  name: Shuttle Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -1003,7 +1003,7 @@
 - type: entity
   parent: BaseWall
   id: WallSolid
-  name: solid wall
+  name: Solid Wall [NT] #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/solid.rsi
@@ -1046,7 +1046,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallSolidDiagonal
-  name: solid wall
+  name: Solid Wall [NT] #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -1083,7 +1083,7 @@
 - type: entity
   parent: WallSolid
   id: WallSolidRust
-  suffix: rusted
+  suffix: Rusted #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/solid_rust.rsi
@@ -1122,7 +1122,7 @@
 - type: entity
   parent: BaseWall
   id: WallSolidChitin
-  name: solid chitin
+  name: Solid Chitin #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Tag
     tags:
@@ -1167,7 +1167,7 @@
 - type: entity
   parent: BaseWall
   id: WallReinforcedChitin
-  name: reinforced chitin
+  name: Reinforced Chitin #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/xeno.rsi
@@ -1225,7 +1225,7 @@
 - type: entity
   parent: WallPlastitanium
   id: WallXenoborg
-  name: xenoborg wall
+  name: Xenoborg Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/xenoborg.rsi
@@ -1238,8 +1238,8 @@
 - type: entity
   parent: WallPlastitaniumDiagonal
   id: WallXenoborgDiagonal
-  name: xenoborg wall
-  suffix: diagonal
+  name: Xenoborg Wall #Far Horizons - The Great Capitalization Crusade
+  suffix: Diagonal #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -1252,7 +1252,7 @@
 - type: entity
   parent: BaseWall
   id: WallUranium
-  name: uranium wall
+  name: Uranium Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Ricochetable
     chance: 1
@@ -1305,7 +1305,7 @@
 - type: entity
   parent: BaseWall
   id: WallWood
-  name: wood wall
+  name: Wood Wall #Far Horizons - The Great Capitalization Crusade
   description: The traditional assistant defense.
   components:
   - type: Ricochetable
@@ -1346,7 +1346,7 @@
 - type: entity
   parent: BaseWall
   id: WallWeb
-  name: web wall
+  name: Web Wall #Far Horizons - The Great Capitalization Crusade
   description: Keeps the spiders in and the assistants out.
   components:
   - type: Ricochetable
@@ -1401,7 +1401,7 @@
 - type: entity
   parent: BaseWall
   id: WallNecropolis
-  name: stone wall
+  name: Stone Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/necropolis.rsi
@@ -1422,7 +1422,7 @@
 - type: entity
   parent: BaseWall
   id: WallMining
-  name: mining wall
+  name: Mining Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/mining.rsi
@@ -1448,7 +1448,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallMiningDiagonal
-  name: mining wall
+  name: Mining Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: Walls
@@ -1492,7 +1492,7 @@
 - type: entity
   parent: BaseWall
   id: WallVaultAlien
-  name: alien vault wall
+  name: Alien Vault Wall #Far Horizons - The Great Capitalization Crusade
   description: A mysterious ornate looking wall. There may be ancient dangers inside.
   components:
   - type: Sprite
@@ -1513,7 +1513,7 @@
 - type: entity
   parent: WallVaultAlien
   id: WallVaultRock
-  name: rock vault wall
+  name: Rock Vault Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
@@ -1525,7 +1525,7 @@
 - type: entity
   parent: WallVaultAlien
   id: WallVaultSandstone
-  name: sandstone vault wall
+  name: Sandstone Vault Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/vault.rsi
@@ -1538,7 +1538,7 @@
 
 - type: entity
   id: WallInvisible
-  name: invisible wall
+  name: Invisible Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: TimedDespawn
     lifetime: 15
@@ -1561,7 +1561,7 @@
 
 - type: entity
   id: WallForce
-  name: force wall
+  name: Force Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: TimedDespawn
     lifetime: 10
@@ -1591,7 +1591,7 @@
 - type: entity
   parent: BaseWall
   id: WallCobblebrick
-  name: cobblestone brick wall
+  name: Cobblestone Brick Wall #Far Horizons - The Great Capitalization Crusade
   description: Stone by stone, perfectly fitted together to form a wall.
   components:
   - type: Sprite
@@ -1617,7 +1617,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallBasaltCobblebrick
-  name: basalt brick wall
+  name: Basalt Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_basalt.rsi
@@ -1630,7 +1630,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallSnowCobblebrick
-  name: snow brick wall
+  name: Snow Brick Wall #Far Horizons - The Great Capitalization Crusade
   description: A cold, not-so-impenetrable wall.
   components:
   - type: Sprite
@@ -1644,7 +1644,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallAsteroidCobblebrick
-  name: asteroid stone brick wall
+  name: Asteroid Stone Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_asteroid.rsi
@@ -1657,7 +1657,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallSandCobblebrick
-  name: sandstone brick wall
+  name: Sandstone Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_sand.rsi
@@ -1670,7 +1670,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallChromiteCobblebrick
-  name: chromite brick wall
+  name: Chromite Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_chromite.rsi
@@ -1683,7 +1683,7 @@
 - type: entity
   parent: WallCobblebrick
   id: WallAndesiteCobblebrick
-  name: andesite brick wall
+  name: Andesite Brick Wall #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     sprite: Structures/Walls/cobblebrick_andesite.rsi
@@ -1698,7 +1698,7 @@
 - type: entity
   id: Cardwall
   parent: BaseStructure
-  name: cardboard wall
+  name: Cardboard Wall #Far Horizons - The Great Capitalization Crusade
   description: Budget cuts are hitting hard.
   placement:
     mode: SnapgridCenter

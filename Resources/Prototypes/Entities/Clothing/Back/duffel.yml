@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackDuffel
-  name: duffel bag
+  name: Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra things.
   components:
   - type: Sprite
@@ -18,7 +18,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelEngineering
-  name: engineering duffel bag
+  name: Engineering Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra tools and supplies.
   components:
   - type: Sprite
@@ -27,7 +27,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelAtmospherics
-  name: atmospherics duffel bag
+  name: Atmospherics Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag made of fire resistant fibers. Smells like plasma.
   components:
   - type: Sprite
@@ -36,7 +36,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelMedical
-  name: medical duffel bag
+  name: Medical Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra medical supplies.
   components:
   - type: Sprite
@@ -45,7 +45,7 @@
 - type: entity
   parent: [ClothingBackpackDuffel, BaseCommandContraband]
   id: ClothingBackpackDuffelCaptain
-  name: captain's duffel bag
+  name: Captain's Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra captainly goods.
   components:
   - type: Sprite
@@ -54,7 +54,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelClown
-  name: clown duffel bag
+  name: Clown Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra honk goods.
   components:
   - type: Sprite
@@ -72,7 +72,7 @@
 - type: entity
   parent: [ClothingBackpackDuffel, BaseSecurityContraband]
   id: ClothingBackpackDuffelSecurity
-  name: security duffel bag
+  name: Security Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra security related goods.
   components:
   - type: Sprite
@@ -81,7 +81,7 @@
 - type: entity
   parent: [ClothingBackpackDuffel, BaseSecurityContraband]
   id: ClothingBackpackDuffelBrigmedic
-  name: brigmedic duffel bag
+  name: Brigmedic Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra medical related goods.
   components:
   - type: Sprite
@@ -90,7 +90,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelChemistry
-  name: chemistry duffel bag
+  name: Chemistry Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra beakers and test tubes.
   components:
   - type: Sprite
@@ -99,7 +99,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelVirology
-  name: virology duffel bag
+  name: Virology Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey.
   components:
   - type: Sprite
@@ -108,7 +108,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelGenetics
-  name: genetics duffel bag
+  name: Genetics Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra genetic mutations.
   components:
   - type: Sprite
@@ -117,7 +117,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelMime
-  name: mime duffel bag
+  name: Mime Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding... mime... stuff.
   components:
   - type: Sprite
@@ -129,7 +129,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelScience
-  name: science duffel bag
+  name: Science Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra science related goods.
   components:
   - type: Sprite
@@ -138,7 +138,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelHydroponics
-  name: hydroponics duffel bag
+  name: Hydroponics Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra gardening tools.
   components:
     - type: Sprite
@@ -147,7 +147,7 @@
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCargoContraband ] #Far Horizons
   id: ClothingBackpackDuffelCargo
-  name: cargo duffel bag
+  name: Cargo Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for stealing cargo's precious loot.
   components:
     - type: Sprite
@@ -156,16 +156,16 @@
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCargoContraband ] #Far Horizons
   id: ClothingBackpackDuffelSalvage
-  name: salvage duffel bag
+  name: Salvage Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding extra exotic treasures.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Duffels/salvage.rsi
+      sprite: _FarHorizons/Clothing/Back/Duffels/salvage.rsi #Far Horizons
 
 - type: entity
   parent: [ClothingBackpackDuffel, BaseSyndicateContraband]
   id: ClothingBackpackDuffelSyndicate
-  name: syndicate duffel bag
+  name: Syndicate Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A large duffel bag for holding various traitor goods.
   components:
   - type: Sprite
@@ -242,7 +242,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelHolding
-  name: duffelbag of holding
+  name: Duffelbag Of Holding #Far Horizons - The Great Capitalization Crusade
   description: A duffelbag that opens into a localized pocket of bluespace.
   components:
   - type: Sprite
@@ -265,7 +265,7 @@
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCentcommContraband ]
   id: ClothingBackpackDuffelCBURN
-  name: CBURN duffel bag
+  name: CBURN Duffel Bag #Far Horizons - The Great Capitalization Crusade
   description: A duffel bag containing a variety of biological containment equipment.
   components:
   - type: Storage

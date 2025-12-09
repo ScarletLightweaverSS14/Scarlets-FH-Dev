@@ -32,19 +32,20 @@
   id: JobSurgeon
   groups:
   - GroupTankHarness
-  - MedicalDoctorHead
+  - SurgeonHead #FH
   - MedicalMask
-  - MedicalDoctorJumpsuit
+  - SurgeonJumpsuit #FH
   - MedicalGloves
-  - MedicalBackpack
-  - MedicalDoctorOuterClothing
-  - MedicalShoes
-  - MedicalDoctorPDA
+  - SurgeonBackpack #FH
+  - SurgeonOuterClothing #FH
+  - SurgeonShoes #FH
+  - SurgeonPDA #FH
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
   - Scarves
   - GroupSpeciesBreathToolMedical
+  - SurgeonEquipmentGroup #FH
 
 - type: roleLoadout
   id: JobNanoTrasenRepresentative

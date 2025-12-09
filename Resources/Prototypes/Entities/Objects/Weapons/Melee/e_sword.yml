@@ -90,16 +90,21 @@
     #   PelletClusterRubber: 0.50
   - type: IgnitionSource
     temperature: 700
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: SurgeryTool
-    speed: 1.5 #FarHorizons
+  - type: Cautery
+    speed: 1.5 
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
-  - type: Cautery
   - type: Scalpel
-  # 🌟Starlight-end🌟
+    speed: 1.5 
+    startSound:
+      path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
+    endSound:
+      path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
+  #FarHorizons End
 
 - type: entity
   name: energy sword
@@ -364,13 +369,6 @@
   - type: Reflect
     reflectProb: .75
     spread: 75
-  - type: Scalpel
-  - type: SurgeryTool
-    speed: 1.5 #FarHorizons
-    startSound:
-      path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
-    endSound:
-      path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
 
 # Item will look weird in handslot. Will need to adjust handstorage visuals in a future PR
 - type: entity
@@ -444,13 +442,6 @@
   - type: EnergySword # STARLIGHT
     colorOptions:
     - "#FF0000" # can only be red
-  - type: Scalpel
-  - type: SurgeryTool
-    successRate: 1.5
-    startSound:
-      path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
-    endSound:
-      path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
 
 - type: entity
   parent: [ EnergyDaggerLoud, BaseXenoborgContraband ]

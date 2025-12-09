@@ -17,7 +17,7 @@
   - Surgery 
   extendedAccess:
   - Paramedic
-  - Surgery
+  #- Surgery #Far Horizons - They already get this.
   - Chemistry
 
 - type: startingGear
@@ -25,8 +25,8 @@
   equipment:
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
-  inhand:
-    - ClothingBackpackDuffelSurgeryFilled
+#  inhand: FH
+#    - ClothingBackpackDuffelSurgeryFilled FH 
 
 - type: chameleonOutfit
   id: SurgeonChameleonOutfit

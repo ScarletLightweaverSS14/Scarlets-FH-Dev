@@ -53,15 +53,15 @@
     netsync: false
   - type: IgnitionSource
     temperature: 1000
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: SurgeryTool
-    speed: 2.1 #FarHorizons
+  - type: Cautery
+    speed: 2.1
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
-  - type: Cautery
-  # 🌟Starlight-end🌟
+  #FarHorizons End
   - type: LightBehaviour
     behaviours:
       - !type:FadeBehaviour # have the radius start small and get larger as it starts to burn

@@ -1,29 +1,9 @@
 - type: gameMapPool
   id: FarHorizonsNanotrasenMapPool
   maps:
-  - StarlightBagel
-  - Barratry
   - FHCog
-  - Cork
-  - StarlightExo
-  - StarlightHotel
-  - Lagan
-  - Leth
-  - Lobster
-  - FHManor
-  - FHOasis
-  - StarlightOmega
-  - Origin
-  - Orwell
-  - StarlightReach
-  - StarlightSaltern
-  - Starboard
-  - Kiloton
-  - StarlightElkridge
-  - Prism
-  - StarlightSilica
-  - FHMeta
   - FHFland
-# - StarlightBox
-# - StarlightMarathon
-# - StarlightPacked
+  - FHManor
+  - FHMeta
+  - FHOasis
+  - FHOmega

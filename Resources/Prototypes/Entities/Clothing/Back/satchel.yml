@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackSatchel
-  name: satchel
+  name: Satchel #Far Horizons - The Great Capitalization Crusade
   description: A trendy looking satchel.
   components:
   - type: Sprite
@@ -15,7 +15,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelLeather
-  name: leather satchel
+  name: Leather Satchel #Far Horizons - The Great Capitalization Crusade
   description: A trend-setting satchel from a bygone era.
   components:
   - type: Sprite
@@ -24,7 +24,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelEngineering
-  name: engineering satchel
+  name: Engineering Satchel #Far Horizons - The Great Capitalization Crusade
   description: A tough satchel with extra pockets.
   components:
   - type: Sprite
@@ -33,7 +33,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelAtmospherics
-  name: atmospherics satchel
+  name: Atmospherics Satchel #Far Horizons - The Great Capitalization Crusade
   description: A tough satchel made of fire resistant fibers. Smells like plasma.
   components:
   - type: Sprite
@@ -42,7 +42,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelClown
-  name: clown satchel
+  name: Clown Satchel #Far Horizons - The Great Capitalization Crusade
   description: For fast running from security.
   components:
   - type: Sprite
@@ -60,7 +60,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelMime
-  name: mime satchel
+  name: Mime Satchel #Far Horizons - The Great Capitalization Crusade
   description: A satchel designed for the silent and expressive art of miming.
   components:
   - type: Sprite
@@ -72,7 +72,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelMedical
-  name: medical satchel
+  name: Medical Satchel #Far Horizons - The Great Capitalization Crusade
   description: A sterile satchel used in medical departments.
   components:
   - type: Sprite
@@ -81,7 +81,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelChemistry
-  name: chemistry satchel
+  name: Chemistry Satchel #Far Horizons - The Great Capitalization Crusade
   description: A sterile satchel with chemist colours.
   components:
   - type: Sprite
@@ -90,7 +90,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelVirology
-  name: virology satchel
+  name: Virology Satchel #Far Horizons - The Great Capitalization Crusade
   description: A satchel made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey.
   components:
   - type: Sprite
@@ -99,7 +99,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelGenetics
-  name: genetics satchel
+  name: Genetics Satchel #Far Horizons - The Great Capitalization Crusade
   description: A sterile satchel with geneticist colours.
   components:
   - type: Sprite
@@ -108,7 +108,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelScience
-  name: science satchel
+  name: Science Satchel #Far Horizons - The Great Capitalization Crusade
   description: Useful for holding research materials.
   components:
   - type: Sprite
@@ -117,7 +117,7 @@
 - type: entity
   parent: [ClothingBackpackSatchel, BaseSecurityContraband]
   id: ClothingBackpackSatchelSecurity
-  name: security satchel
+  name: Security Satchel #Far Horizons - The Great Capitalization Crusade
   description: A robust satchel for security related needs.
   components:
   - type: Sprite
@@ -126,7 +126,7 @@
 - type: entity
   parent: [ClothingBackpackSatchel, BaseSecurityContraband]
   id: ClothingBackpackSatchelBrigmedic
-  name: brigmedic satchel
+  name: Brigmedic Satchel #Far Horizons - The Great Capitalization Crusade
   description: A sterile satchel for medical related needs.
   components:
   - type: Sprite
@@ -135,7 +135,7 @@
 - type: entity
   parent: [ClothingBackpackSatchel, BaseCommandContraband]
   id: ClothingBackpackSatchelCaptain
-  name: captain's satchel
+  name: Captain's Satchel #Far Horizons - The Great Capitalization Crusade
   description: An exclusive satchel for Nanotrasen officers.
   components:
   - type: Sprite
@@ -144,7 +144,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelHydroponics
-  name: hydroponics satchel
+  name: Hydroponics Satchel #Far Horizons - The Great Capitalization Crusade
   description: A satchel made of all natural fibers.
   components:
   - type: Sprite
@@ -153,7 +153,7 @@
 - type: entity
   parent: [ ClothingBackpackSatchel, BaseCargoContraband ] #Far Horizons
   id: ClothingBackpackSatchelCargo
-  name: cargo satchel
+  name: Cargo Satchel #Far Horizons - The Great Capitalization Crusade
   description: A robust satchel for stealing cargo's loot.
   components:
     - type: Sprite
@@ -162,16 +162,16 @@
 - type: entity
   parent: [ ClothingBackpackSatchel, BaseCargoContraband ] #Far Horizons
   id: ClothingBackpackSatchelSalvage
-  name: salvage satchel
+  name: Salvage Satchel #Far Horizons - The Great Capitalization Crusade
   description: A robust satchel for stashing your loot.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Satchels/salvage.rsi
+      sprite: _FarHorizons/Clothing/Back/Satchels/salvage.rsi #Far Horizons
 
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelHolding
-  name: satchel of holding
+  name: Satchel Of Holding #Far Horizons - The Great Capitalization Crusade
   description: A satchel that opens into a localized pocket of bluespace.
   components:
   - type: Sprite
@@ -191,7 +191,7 @@
 - type: entity
   parent: ClothingBackpackSatchelHolding
   id: ClothingBackpackSatchelAdmin
-  name: satchel of administration
+  name: Satchel Of Administration #Far Horizons - The Great Capitalization Crusade
   suffix: Admin
   description: If you are somehow seeing this, no you're not.
   components:

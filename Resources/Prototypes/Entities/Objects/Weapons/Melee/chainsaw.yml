@@ -47,10 +47,12 @@
         maxVol: 300
   - type: UseDelay
     delay: 1
+  #FarHorizons Start
   - type: SurgeryTool
-    speed: 2.0 #FarHorizons
+  - type: BoneSaw 
+    speed: 2.0 
     startSound:
       path: /Audio/Weapons/chainsawwield.ogg
     endSound:
       path: /Audio/Weapons/chainsaw.ogg
-  - type: BoneSaw # 🌟Starlight🌟
+  #FarHorizons End

@@ -39,13 +39,13 @@
     materialComposition:
       Steel: 100
       Wood: 100
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: SurgicalDrill
-  - type: SurgeryTool
-    speed: 2.6 #FarHorizons
+    speed: 2.6 
     endSound:
       path: "/Audio/Weapons/smash.ogg"
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   name: mining drill
@@ -73,15 +73,15 @@
         Brute: 3
       types:
         Structural: 15
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: SurgicalDrill
-  - type: SurgeryTool
-    speed: 1.8 #FarHorizons
+    speed: 1.8 
     startSound:
       path: "/Audio/Items/drill_use.ogg"
     endSound:
       path: "/Audio/Items/drill_use.ogg"
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   name: diamond tipped mining drill

@@ -32,13 +32,15 @@
         Heat: 5
     soundHit:
       path: /Audio/Effects/lightburn.ogg
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Cautery
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
-  - type: Cautery
-  
+#FarHorizons End
+ 
 - type: entity
   name: abductor's cautery
   id: CauteryAbductor
@@ -46,12 +48,15 @@
   components:
   - type: Sprite
     state: abductor
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Cautery
     speed: 0.5
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
+  #FarHorizons End
 
 - type: entity
   name: cautery
@@ -61,12 +66,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: cautery
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Cautery
     speed: 0.5
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -79,12 +87,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: cauteryripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Cautery
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/cautery2.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -120,10 +131,12 @@
       path: /Audio/Items/drill_hit.ogg
   - type: StaticPrice
     price: 40
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: SurgicalDrill
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
-  - type: SurgicalDrill
+  #FarHorizons End
   
 - type: entity
   name: abductor's drill
@@ -132,10 +145,13 @@
   components:
   - type: Sprite
     state: abductor
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: SurgicalDrill
     speed: 0.5
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
+  #FarHorizons End
 
 - type: entity
   name: drill
@@ -145,10 +161,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: drill
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: SurgicalDrill
     speed: 0.5
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -161,10 +180,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: drillripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: SurgicalDrill
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -207,12 +229,14 @@
         Slash: 8
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  #FarHorizons Start
   - type: Scalpel
-  - type: SurgeryTool
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  - type: SurgeryTool
+  #FarHorizons End
       
 - type: entity
   name: abductor's scalpel
@@ -221,12 +245,15 @@
   components:
   - type: Sprite
     state: abductor
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Scalpel
     speed: 0.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
       
 - type: entity
   name: scalpel
@@ -236,12 +263,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: scalpel
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Scalpel
     speed: 0.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -254,12 +284,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: scalpelripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Scalpel
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -281,12 +314,15 @@
     state: shiv
   - type: Item
     heldPrefix: shiv
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Scalpel
     speed: 1.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
 
 - type: entity
   name: advanced scalpel
@@ -302,12 +338,15 @@
     damage:
       types:
         Slash: 12
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Scalpel
     speed: 0.6
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
 
 - type: entity
   name: laser scalpel
@@ -319,14 +358,21 @@
     state: laser
   - type: Item
     heldPrefix: laser
+  #FarHorizons Start
   - type: Hemostat
-  - type: Cautery
-  - type: SurgeryTool
     speed: 0.3
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  - type: Cautery
+    speed: 0.3
+    startSound:
+      path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  - type: SurgeryTool
+  #FarHorizons End
 
 # Scissors
 - type: entity
@@ -348,12 +394,14 @@
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/scissors.rsi #Starlight
+  #FarHorizons Start
   - type: Retractor
-  - type: SurgeryTool
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor2.ogg
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   name: advanced retractor
@@ -367,12 +415,15 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 45
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Retractor
     speed: 0.6
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor2.ogg
+  #FarHorizons End
       
 - type: entity
   name: abductor's retractor
@@ -386,12 +437,15 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 45
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Retractor
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor2.ogg
+  #FarHorizons End
       
 - type: entity
   name: retractor
@@ -402,12 +456,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: retractor
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Retractor
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor2.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -421,12 +478,15 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: retractorripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Retractor
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/retractor2.ogg
+  #FarHorizons end
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -446,10 +506,12 @@
   - type: Item
     heldPrefix: hemostat
     storedRotation: 90
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Hemostat
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
-  - type: Hemostat
+  #FarHorizons End
 
 - type: entity
   name: advanced hemostat
@@ -460,10 +522,13 @@
   - type: Sprite
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi # Starlight
     state: advanced-hemostat
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Hemostat
     speed: 0.6
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
+  #FarHorizons End
       
 - type: entity
   name: abductor's hemostat
@@ -474,10 +539,13 @@
   - type: Sprite
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi # Starlight
     state: abductor-hemostat
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Hemostat
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
+  #FarHorizons End
       
 - type: entity
   name: hemostat
@@ -488,10 +556,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: hemostat
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Hemostat
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -505,10 +576,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: hemostatripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: Hemostat
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -528,10 +602,12 @@
   - type: Item
     heldPrefix: setter
     storedRotation: 90
+  #FarHorizons Start
   - type: BoneSetter
-  - type: SurgeryTool
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_setter.ogg
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   name: advanced bone setter
@@ -549,10 +625,13 @@
   - type: Item
     heldPrefix: setter
     storedRotation: 45  
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSetter
     speed: 0.6
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_setter.ogg
+  #FarHorizons End
       
 - type: entity
   name: abductor's bone setter
@@ -566,10 +645,13 @@
   - type: Item
     heldPrefix: setter
     storedRotation: 45
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSetter
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_setter.ogg
+  #FarHorizons End
       
 - type: entity
   name: bone setter
@@ -580,10 +662,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: bonesetter
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSetter
     speed: 0.4
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_setter.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -597,10 +682,13 @@
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/surgery.rsi
     state: bonesetterripper
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSetter
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_setter.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
@@ -630,10 +718,12 @@
   - type: Tool
     qualities:
       - Sawing
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_saw.ogg
-  - type: BoneSaw
+  #FarHorizons End
 
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
@@ -656,11 +746,13 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: Tool
     speedModifier: 0.5
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 0.8
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/bone_saw.ogg
-  - type: BoneSaw
+  #FarHorizons End
   
 - type: entity
   name: circular saw
@@ -680,12 +772,15 @@
       path: /Audio/Items/drill_hit.ogg
   - type: Tool
     speedModifier: 1.5
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 0.5
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
     endSound:
       path: /Audio/Items/drill_hit.ogg
+  #FarHorizons  End
 
 - type: entity
   name: advanced circular saw
@@ -701,12 +796,15 @@
     attackRate: 1.5
   - type: Tool
     speedModifier: 2.0
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 0.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
     endSound:
       path: /Audio/Items/drill_hit.ogg
+  #FarHorizons End
       
 - type: entity
   name: abductor's circular saw
@@ -718,12 +816,15 @@
     state: abductor
   - type: Tool
     speedModifier: 0.4
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 0.1
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
     endSound:
       path: /Audio/Items/drill_hit.ogg
+  #FarHorizons End
 
 - type: entity
   name: circular saw
@@ -736,12 +837,15 @@
     state: saw
   - type: Tool
     speedModifier: 0.4
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 0.1
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
     endSound:
       path: /Audio/Items/drill_hit.ogg
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem
@@ -757,12 +861,15 @@
     state: sawripper
   - type: Tool
     speedModifier: 1
+  #FarHorizons Start
   - type: SurgeryTool
+  - type: BoneSaw
     speed: 1.2
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/saw.ogg
     endSound:
       path: /Audio/Items/drill_hit.ogg
+  #FarHorizons End
   - type: HeldSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9

@@ -26,7 +26,7 @@ public sealed class ReactorPartSystem : SharedReactorPartSystem
     /// <returns></returns>
     public GasMixture? ProcessGas(ReactorPartComponent reactorPart, Entity<NuclearReactorComponent> reactorEnt, AtmosDeviceUpdateEvent args, GasMixture inGas)
     {
-        if (reactorPart.RodType != (byte)ReactorPartComponent.RodTypes.GasChannel)
+        if (reactorPart.RodType != ReactorPartComponent.RodTypes.GasChannel)
             return null;
 
         GasMixture? ProcessedGas = null;
@@ -102,10 +102,10 @@ public sealed class ReactorPartSystem : SharedReactorPartSystem
             if (neutron.velocity > 0)
             {
                 var neutronCount = GasNeutronInteract(reactorPart);
-                if (neutronCount > 1)
+                if (neutronCount > 0)
                     for (var i = 0; i < neutronCount; i++)
                         neutrons.Add(new() { dir = _random.NextAngle().GetDir(), velocity = _random.Next(1, 3 + 1) });
-                else
+                else if (neutronCount < 0)
                     neutrons.Remove(neutron);
             }
         }
@@ -117,7 +117,7 @@ public sealed class ReactorPartSystem : SharedReactorPartSystem
     /// Determines the number of additional neutrons the gas makes.
     /// </summary>
     /// <param name="reactorPart"></param>
-    /// <returns></returns>
+    /// <returns>Change in number of neutrons</returns>
     private int GasNeutronInteract(ReactorPartComponent reactorPart)
     {
         if (reactorPart.AirContents == null)

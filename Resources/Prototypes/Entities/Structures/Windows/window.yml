@@ -1,7 +1,7 @@
 - type: entity
   id: Window
   parent: [BaseDeltaPressureGlass, BaseStructure, BaseStructureDissolvable] # Starlight-edit 
-  name: window
+  name: Window [NT] #Far Horizons - The Great Capitalization Crusade
   description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
@@ -102,7 +102,7 @@
 - type: entity
   parent: Window
   id: TintedWindow
-  name: tinted window
+  name: Tinted Window #Far Horizons - The Great Capitalization Crusade
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -129,7 +129,7 @@
 - type: entity
   id: WindowDirectional
   parent: [BaseDeltaPressureGlassQuarter, BaseStructure]
-  name: directional window
+  name: Directional Window #Far Horizons - The Great Capitalization Crusade
   description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
@@ -231,7 +231,7 @@
 - type: entity
   id: WindowFrostedDirectional
   parent: WindowDirectional
-  name: directional frosted window
+  name: Directional Frosted Window #Far Horizons - The Great Capitalization Crusade
   description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
@@ -250,7 +250,7 @@
 - type: entity
   parent: Window
   id: WindowDiagonal
-  suffix: diagonal
+  suffix: Diagonal #Far Horizons - The Great Capitalization Crusade
   placement:
     mode: SnapgridCenter
     snap:

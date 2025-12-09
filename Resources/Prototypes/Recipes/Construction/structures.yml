@@ -169,7 +169,7 @@
 
 - type: construction
   id: DiagonalShuttleWall
-  name: construction-recipe-diagonal-shuttle-wall
+  name: construction-recipe-diagonal-shuttle-wall-fh #Far Horizons - The Great Capitalization Crusade
   graph: Girder
   startNode: start
   targetNode: diagonalshuttleWall
@@ -286,7 +286,7 @@
 
 - type: construction
   id: WindowDiagonal
-  name: construction-window-diagonal
+  name: construction-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: windowDiagonal
@@ -314,7 +314,7 @@
 
 - type: construction
   id: ReinforcedWindowDiagonal
-  name: construction-recipe-reinforced-window-diagonal
+  name: construction-recipe-reinforced-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: reinforcedWindowDiagonal
@@ -356,7 +356,7 @@
 
 - type: construction
   id: ClockworkWindowDiagonal
-  name: construction-recipe-clockwork-window-diagonal
+  name: construction-recipe-clockwork-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: clockworkWindowDiagonal
@@ -412,7 +412,7 @@
 
 - type: construction
   id: PlasmaWindowDiagonal
-  name: construction-recipe-plasma-window-diagonal
+  name: construction-recipe-plasma-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: plasmaWindowDiagonal
@@ -426,7 +426,7 @@
 
 - type: construction
   id: ReinforcedPlasmaWindowDiagonal
-  name: construction-recipe-reinforced-plasma-window-diagonal
+  name: construction-recipe-reinforced-plasma-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: reinforcedPlasmaWindowDiagonal
@@ -534,7 +534,7 @@
 
 - type: construction
   id: UraniumWindowDiagonal
-  name: construction-recipe-uranium-window-diagonal
+  name: construction-recipe-uranium-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: uraniumWindowDiagonal
@@ -548,7 +548,7 @@
 
 - type: construction
   id: ReinforcedUraniumWindowDiagonal
-  name: construction-recipe-reinforced-uranium-window-diagonal
+  name: construction-recipe-reinforced-uranium-window-diagonal-fh #Far Horizons - The Great Capitalization Crusade
   graph: WindowDiagonal
   startNode: start
   targetNode: reinforcedUraniumWindowDiagonal
@@ -614,7 +614,7 @@
 
 - type: construction
   id: FirelockEdge
-  name: construction-recipe-firelock-edge
+  name: construction-recipe-firelock-edge-fh #Far Horizons - The Great Capitalization Crusade
   graph: Firelock
   startNode: start
   targetNode: FirelockEdge
@@ -630,7 +630,7 @@
   graph: Turnstile
   startNode: start
   targetNode: turnstile
-  category: construction-category-structures
+  category: construction-category-structures-fh #Far Horizons - The Great Capitalization Crusade
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -724,7 +724,7 @@
 
 - type: construction
   id: BarricadeDirectional
-  name: construction-recipe-barricade-directional
+  name: construction-recipe-barricade-directional-fh #Far Horizons - The Great Capitalization Crusade
   graph: BarricadeDirectional
   startNode: start
   targetNode: barricadefull
@@ -749,7 +749,7 @@
 
 - type: construction
   id: RailingCorner
-  name: construction-recipe-railing-corner
+  name: construction-recipe-railing-corner-fh #Far Horizons - The Great Capitalization Crusade
   graph: Railing
   startNode: start
   targetNode: railingCorner
@@ -762,7 +762,7 @@
 
 - type: construction
   id: RailingCornerSmall
-  name: construction-recipe-railing-corner-small
+  name: construction-recipe-railing-corner-small-fh #Far Horizons - The Great Capitalization Crusade
   graph: Railing
   startNode: start
   targetNode: railingCornerSmall
@@ -775,7 +775,7 @@
 
 - type: construction
   id: RailingRound
-  name: construction-recipe-railing-round
+  name: construction-recipe-railing-round-fh #Far Horizons - The Great Capitalization Crusade
   graph: Railing
   startNode: start
   targetNode: railingRound
@@ -801,7 +801,7 @@
 
 - type: construction
   id: FenceMetalCorner
-  name: construction-recipe-fence-metal-corner
+  name: construction-recipe-fence-metal-corner-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceMetal
   startNode: start
   targetNode: corner
@@ -814,7 +814,7 @@
 
 - type: construction
   id: FenceMetalEnd
-  name: construction-recipe-fence-metal-end
+  name: construction-recipe-fence-metal-end-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceMetal
   startNode: start
   targetNode: end
@@ -852,7 +852,7 @@
 
 - type: construction
   id: FenceWoodEnd
-  name: construction-recipe-fence-wood-end
+  name: construction-recipe-fence-wood-end-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: end
@@ -865,7 +865,7 @@
 
 - type: construction
   id: FenceWoodCorner
-  name: construction-recipe-fence-wood-corner
+  name: construction-recipe-fence-wood-corner-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: corner
@@ -878,7 +878,7 @@
 
 - type: construction
   id: FenceWoodTJunction
-  name: construction-recipe-fence-wood-t-junction
+  name: construction-recipe-fence-wood-t-junction-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: tjunction
@@ -916,7 +916,7 @@
 
 - type: construction
   id: FenceWoodEndSmall
-  name: construction-recipe-fence-wood-end-small
+  name: construction-recipe-fence-wood-end-small-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: end_small
@@ -929,7 +929,7 @@
 
 - type: construction
   id: FenceWoodCornerSmall
-  name: construction-recipe-fence-wood-corner-small
+  name: construction-recipe-fence-wood-corner-small-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: corner_small
@@ -942,7 +942,7 @@
 
 - type: construction
   id: FenceWoodTJunctionSmall
-  name: construction-recipe-fence-wood-t-junction-small
+  name: construction-recipe-fence-wood-t-junction-small-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: tjunction_small
@@ -955,7 +955,7 @@
 
 - type: construction
   id: FenceWoodGateSmall
-  name: construction-recipe-fence-wood-gate-small
+  name: construction-recipe-fence-wood-gate-small-fh #Far Horizons - The Great Capitalization Crusade
   graph: FenceWood
   startNode: start
   targetNode: gate_small
@@ -995,7 +995,7 @@
 
 - type: construction
   id: PinionAirlock
-  name: construction-recipe-pinion-airlock
+  name: construction-recipe-pinion-airlock-fh #Far Horizons - The Great Capitalization Crusade
   graph: PinionAirlock
   startNode: start
   targetNode: airlock
@@ -1008,7 +1008,7 @@
 
 - type: construction
   id: PinionAirlockGlass
-  name: construction-recipe-pinion-airlock-glass
+  name: construction-recipe-pinion-airlock-glass-fh #Far Horizons - The Great Capitalization Crusade
   graph: PinionAirlock
   startNode: start
   targetNode: glassAirlock
@@ -1034,7 +1034,7 @@
 
 - type: construction
   id: AirlockGlassShuttle
-  name: construction-recipe-airlock-glass-shuttle
+  name: construction-recipe-airlock-glass-shuttle-fh #Far Horizons - The Great Capitalization Crusade
   graph: AirlockShuttle
   startNode: start
   targetNode: airlockGlass
@@ -1246,7 +1246,7 @@
 
 - type: construction
   id: PlasticFlapsClear
-  name: construction-recipe-plastic-flaps-clear
+  name: construction-recipe-plastic-flaps-clear-fh #Far Horizons - The Great Capitalization Crusade
   graph: PlasticFlapsGraph
   startNode: start
   targetNode: plasticFlaps
@@ -1259,7 +1259,7 @@
 
 - type: construction
   id: PlasticFlapsOpaque
-  name: construction-recipe-plastic-flaps-opaque
+  name: construction-recipe-plastic-flaps-opaque-fh #Far Horizons - The Great Capitalization Crusade
   graph: PlasticFlapsGraph
   startNode: start
   targetNode: opaqueFlaps
@@ -1321,7 +1321,7 @@
 
 - type: construction
   id: SolidSecretDoor
-  name: recipes-secret-door-name
+  name: recipes-secret-door-name-fh #Far Horizons - The Great Capitalization Crusade
   description: recipes-secret-door-desc
   graph: SecretDoor
   startNode: start

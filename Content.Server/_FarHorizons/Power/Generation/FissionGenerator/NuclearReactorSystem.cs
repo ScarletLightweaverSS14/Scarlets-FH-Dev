@@ -24,6 +24,11 @@ using System.Linq;
 using Content.Shared.Atmos.Piping.Components;
 using Content.Shared._FarHorizons.Materials.Systems;
 using Content.Server.NodeContainer.Nodes;
+using Content.Shared.DeviceLinking.Events;
+using Content.Server.DeviceLinking.Systems;
+using Content.Shared.Construction.Components;
+using Content.Shared.Popups;
+using Content.Server.Popups;
 
 namespace Content.Server._FarHorizons.Power.Generation.FissionGenerator;
 
@@ -50,9 +55,9 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = null!;
-
-    private static readonly int _gridWidth = NuclearReactorComponent.ReactorGridWidth;
-    private static readonly int _gridHeight = NuclearReactorComponent.ReactorGridHeight;
+    [Dependency] private readonly DeviceLinkSystem _signal = default!;
+    [Dependency] private readonly PopupSystem _popupSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private readonly float _threshold = 0.5f;
     private float _accumulator = 0f;
@@ -61,6 +66,11 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
     {
         base.Initialize();
 
+        // Component events
+        SubscribeLocalEvent<NuclearReactorComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<NuclearReactorComponent, ComponentShutdown>(OnShutdown);
+
+        // Atmos events
         SubscribeLocalEvent<NuclearReactorComponent, AtmosDeviceUpdateEvent>(OnUpdate);
         SubscribeLocalEvent<NuclearReactorComponent, AtmosDeviceEnabledEvent>(OnEnable);
         SubscribeLocalEvent<NuclearReactorComponent, GasAnalyzerScanEvent>(OnAnalyze);
@@ -72,18 +82,34 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         // BUI events
         SubscribeLocalEvent<NuclearReactorComponent, ReactorItemActionMessage>(OnItemActionMessage);
         SubscribeLocalEvent<NuclearReactorComponent, ReactorControlRodModifyMessage>(OnControlRodMessage);
+
+        // Signal events
+        SubscribeLocalEvent<NuclearReactorComponent, SignalReceivedEvent>(OnSignalReceived);
+
+        SubscribeLocalEvent<NuclearReactorComponent, AnchorStateChangedEvent>(OnAnchorChanged);
+        SubscribeLocalEvent<NuclearReactorComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
     }
+
     
-    private void OnEnable(Entity<NuclearReactorComponent> ent, ref AtmosDeviceEnabledEvent args)
+
+    private void OnInit(EntityUid uid, NuclearReactorComponent comp, ref ComponentInit args)
     {
-        var comp = ent.Comp;
+        _signal.EnsureSinkPorts(uid, comp.ControlRodInsertPort, comp.ControlRodRetractPort);
+
+        var prefab = SelectPrefab(comp.Prefab);
         for (var x = 0; x < _gridWidth; x++)
-        {
             for (var y = 0; y < _gridHeight; y++)
             {
+                comp.ComponentGrid[x, y] = prefab[x, y] != null ? new ReactorPartComponent(prefab[x, y]!) : null;
                 comp.FluxGrid[x, y] = [];
             }
-        }
+
+        UpdateGasVolume(comp);
+    }
+
+    private void OnEnable(Entity<NuclearReactorComponent> ent, ref AtmosDeviceEnabledEvent args)
+    {
+        UpdateGridVisual(ent);
     }
 
     private void OnAnalyze(EntityUid uid, NuclearReactorComponent comp, ref GasAnalyzerScanEvent args)
@@ -112,6 +138,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
 
     private void OnPartChanged(EntityUid uid, NuclearReactorComponent component, ContainerModifiedMessage args) => ReactorTryGetSlot(uid, "part_slot", out component.PartSlot!);
 
+    private void OnShutdown(Entity<NuclearReactorComponent> ent, ref ComponentShutdown args) => CleanUp(ent.Comp);
+
     #region Main Loop
     private void OnUpdate(Entity<NuclearReactorComponent> ent, ref AtmosDeviceUpdateEvent args)
     {
@@ -125,8 +153,18 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         if (comp.Melted)
             return;
 
-        if (comp.VisualGrid[0, 0].Id == 0)
-        { InitGrid(ent); comp.ApplyPrefab = true; }
+        // I wish I could do a lot of this stuff on init, but it gets mad if I try
+        if (!comp.InletEnt.HasValue || EntityManager.Deleted(comp.InletEnt.Value))
+            comp.InletEnt = SpawnAttachedTo("ReactorGasPipe", new(uid, -2, -1), rotation: Angle.FromDegrees(-90));
+        if (!comp.OutletEnt.HasValue || EntityManager.Deleted(comp.OutletEnt.Value))
+            comp.OutletEnt = SpawnAttachedTo("ReactorGasPipe", new(uid, 2, 1), rotation: Angle.FromDegrees(90));
+
+        CheckAnchoredPipes(uid, comp);
+
+        if (!_nodeContainer.TryGetNode(comp.InletEnt.Value, comp.PipeName, out PipeNode? inlet))
+            return;
+        if (!_nodeContainer.TryGetNode(comp.OutletEnt.Value, comp.PipeName, out PipeNode? outlet))
+            return;
 
         if (comp.ApplyPrefab)
         {
@@ -140,18 +178,9 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
             }
 
             comp.ApplyPrefab = false;
-            UpdateGridVisual(comp);
+            UpdateGridVisual(ent);
+            UpdateGasVolume(comp);
         }
-
-        if (!comp.InletEnt.HasValue || EntityManager.Deleted(comp.InletEnt.Value))
-            comp.InletEnt = SpawnAttachedTo("ReactorGasPipe", new(ent.Owner, -2, -1), rotation:Angle.FromDegrees(-90));
-        if (!comp.OutletEnt.HasValue || EntityManager.Deleted(comp.OutletEnt.Value))
-            comp.OutletEnt = SpawnAttachedTo("ReactorGasPipe", new(ent.Owner, 2, 1), rotation: Angle.FromDegrees(90));
-
-        if (!_nodeContainer.TryGetNode(comp.InletEnt.Value, comp.PipeName, out PipeNode? inlet))
-            return;
-        if (!_nodeContainer.TryGetNode(comp.OutletEnt.Value, comp.PipeName, out PipeNode? outlet))
-            return;
 
         _appearance.SetData(uid, ReactorVisuals.Input, inlet.Air.Moles.Sum() > 20);
         _appearance.SetData(uid, ReactorVisuals.Output, outlet.Air.Moles.Sum() > 20);
@@ -197,7 +226,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
                     _partSystem.ProcessHeat(ReactorComp, ent, GetGridNeighbors(comp, x, y), this);
                     comp.TemperatureGrid[x, y] = ReactorComp.Temperature;
 
-                    if (ReactorComp.RodType == (byte)ReactorPartComponent.RodTypes.Control && ReactorComp.IsControlRod)
+                    if (ReactorComp.RodType == ReactorPartComponent.RodTypes.ControlRod && ReactorComp.IsControlRod)
                     {
                         AvgControlRodInsertion += ReactorComp.NeutronCrossSection;
                         ReactorComp.ConfiguredInsertionLevel = comp.ControlRodInsertion;
@@ -239,10 +268,10 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
                 {
                     NeutronCount++;
 
-                    var dir = neutron.dir.AsFlag();
+                    var dir = (byte)neutron.dir.AsFlag();
                     // Bit abuse
-                    var xmod = (((byte)dir >> 1) % 2) - (((byte)dir >> 3) % 2);
-                    var ymod = (((byte)dir >> 2) % 2) - ((byte)dir % 2);
+                    var xmod = ((dir >> 1) % 2) - ((dir >> 3) % 2);
+                    var ymod = ((dir >> 2) % 2) - (dir % 2);
 
                     if (x + xmod >= 0 && y + ymod >= 0 && x + xmod <= _gridWidth - 1
                         && y + ymod <= _gridHeight - 1)
@@ -299,32 +328,6 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         ent.Comp.RadiationLevel /= 2;
     }
 
-    private void InitGrid(Entity<NuclearReactorComponent> ent)
-    {
-        var xspace = 18f / 32f;
-        var yspace = 15f / 32f;
-
-        var yoff = 5f / 32f;
-
-        for (var x = 0; x < _gridWidth; x++)
-        {
-            for (var y = 0; y < _gridHeight; y++)
-            {
-                // ...48 entities stuck on the grid, spawn one more, pass it around, 49 entities stuck on the grid...
-                ent.Comp.VisualGrid[x, y] = _entityManager.GetNetEntity(SpawnAttachedTo("ReactorComponent", new(ent.Owner, xspace * (y - 3), (-yspace * (x - 3)) - yoff)));
-            }
-        }
-    }
-
-    private static ReactorPartComponent?[,] SelectPrefab(string select) => select switch
-    {
-        "normal" => NuclearReactorPrefabs.Normal,
-        "debug" => NuclearReactorPrefabs.Debug,
-        "meltdown" => NuclearReactorPrefabs.Meltdown,
-        "alignment" => NuclearReactorPrefabs.Alignment,
-        _ => NuclearReactorPrefabs.Empty,
-    };
-
     private static List<ReactorPartComponent?> GetGridNeighbors(NuclearReactorComponent reactor, int x, int y)
     {
         var neighbors = new List<ReactorPartComponent?>();
@@ -345,6 +348,22 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         else
             neighbors.Add(reactor.ComponentGrid[x, y + 1]);
         return neighbors;
+    }
+
+    private void UpdateGasVolume(NuclearReactorComponent reactor)
+    {
+        if (reactor.InletEnt == null || !_nodeContainer.TryGetNode(reactor.InletEnt.Value, reactor.PipeName, out PipeNode? inlet))
+            return;
+
+        var totalGasVolume = reactor.ReactorVesselGasVolume;
+
+        for (var x = 0; x < _gridWidth; x++)
+            for (var y = 0; y < _gridHeight; y++)
+                if (reactor.ComponentGrid![x, y] != null)
+                {
+                    totalGasVolume += reactor.ComponentGrid[x, y]!.GasVolume;
+                }
+        inlet.Air.Volume = totalGasVolume;
     }
 
     private GasMixture? ProcessCasingGas(NuclearReactorComponent reactor, AtmosDeviceUpdateEvent args, GasMixture inGas)
@@ -439,7 +458,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
                     if (RC == null)
                         return;
                     MeltdownBadness += ((RC.Properties!.Radioactivity * 2) + (RC.Properties.NeutronRadioactivity * 5) + (RC.Properties.FissileIsotopes * 10)) * (RC.Melted ? 2 : 1);
-                    if (RC.RodType == (byte)ReactorPartComponent.RodTypes.GasChannel)
+                    if (RC.RodType == ReactorPartComponent.RodTypes.GasChannel)
                         _atmosphereSystem.Merge(comp.AirContents, RC.AirContents ?? new());
                 }
             }
@@ -467,7 +486,7 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
         Array.Clear(comp.TemperatureGrid);
         Array.Clear(comp.FluxGrid);
 
-        UpdateGridVisual(comp);
+        UpdateGridVisual(ent);
     }
 
     private void UpdateVisuals(Entity<NuclearReactorComponent> ent)
@@ -503,11 +522,8 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
             case float n when n > comp.ReactorOverheatTemp && n <= comp.ReactorFireTemp:
                 _appearance.SetData(uid, ReactorVisuals.Status, ReactorStatusLights.Overheat);
                 break;
-            case float n when n > comp.ReactorFireTemp && n <= comp.ReactorMeltdownTemp:
+            case float n when n > comp.ReactorFireTemp && n <= float.PositiveInfinity:
                 _appearance.SetData(uid, ReactorVisuals.Status, ReactorStatusLights.Meltdown);
-                break;
-            case float n when n > comp.ReactorMeltdownTemp && n <= float.PositiveInfinity:
-                _appearance.SetData(uid, ReactorVisuals.Status, ReactorStatusLights.Boom);
                 break;
             default:
                 _appearance.SetData(uid, ReactorVisuals.Status, ReactorStatusLights.Off);
@@ -751,15 +767,71 @@ public sealed class NuclearReactorSystem : SharedNuclearReactorSystem
             _entityManager.DeleteEntity(comp.PartSlot.Item);
         }
 
-        UpdateGridVisual(comp);
+        UpdateGridVisual(ent);
+        UpdateGasVolume(comp);
         UpdateUI(ent.Owner, comp);
     }
 
     private void OnControlRodMessage(Entity<NuclearReactorComponent> ent, ref ReactorControlRodModifyMessage args)
     {
-        ent.Comp.ControlRodInsertion = Math.Clamp(ent.Comp.ControlRodInsertion + args.Change, 0, 2);
-        _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} set control rod insertion of {ToPrettyString(ent):target} to {ent.Comp.ControlRodInsertion}");
+        if(AdjustControlRods(ent.Comp, args.Change))
+            _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Actor):actor} set control rod insertion of {ToPrettyString(ent):target} to {ent.Comp.ControlRodInsertion}");
         UpdateUI(ent.Owner, ent.Comp);
     }
     #endregion
+
+    private void OnSignalReceived(EntityUid uid, NuclearReactorComponent comp, ref SignalReceivedEvent args)
+    {
+        var change = 0f;
+        if (args.Port == comp.ControlRodInsertPort)
+            change = 0.1f;
+        else if (args.Port == comp.ControlRodRetractPort)
+            change = -0.1f;
+
+        if (AdjustControlRods(comp, change))
+            _adminLog.Add(LogType.Action, $"{ToPrettyString(args.Trigger):trigger} set control rod insertion of {ToPrettyString(uid):target} to {comp.ControlRodInsertion}");
+    }
+
+    private void OnAnchorChanged(EntityUid uid, NuclearReactorComponent comp, ref AnchorStateChangedEvent args)
+    {
+        if (!args.Anchored)
+            CleanUp(comp);
+    }
+
+    private void OnUnanchorAttempt(EntityUid uid, NuclearReactorComponent comp, ref UnanchorAttemptEvent args)
+    {
+        if (comp.Temperature>=Atmospherics.T0C+80 || !CheckEmpty(comp))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("reactor-unanchor-warning"), args.User, args.User, PopupType.LargeCaution);
+            args.Cancel();
+        }
+    }
+
+    private static bool CheckEmpty(NuclearReactorComponent comp)
+    {
+        for (var x = 0; x < _gridWidth; x++)
+            for (var y = 0; y < _gridHeight; y++)
+                if (comp.ComponentGrid![x, y] != null)
+                    return false;
+        return true;
+    }
+
+    private void CheckAnchoredPipes(EntityUid uid, NuclearReactorComponent comp)
+    {
+        if (comp.InletEnt == null || comp.OutletEnt == null)
+            return;
+
+        if (!Transform(comp.InletEnt.Value).Anchored || !Transform(comp.OutletEnt.Value).Anchored)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("reactor-anchor-warning"), uid, PopupType.MediumCaution);
+            CleanUp(comp);
+            _transform.Unanchor(uid);
+        }
+    }
+
+    private void CleanUp(NuclearReactorComponent comp)
+    {
+        QueueDel(comp.InletEnt);
+        QueueDel(comp.OutletEnt);
+    }
 }

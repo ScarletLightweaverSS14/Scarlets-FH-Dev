@@ -24,8 +24,8 @@
       prob: 0.5
     - id: SLChangeling #Starlight lings
       prob: 0.4
-    - id: Vampire
-      prob: 0.25
+#    - id: Vampire # Starlight - disabled until reworked
+#      prob: 0.25
     - id: SubWizard
       prob: 0.05
 
@@ -39,8 +39,8 @@
       prob: 0.5
     - id: SLChangeling # StarlightLings
       prob: 0.4
-    - id: Vampire
-      prob: 0.25
+#    - id: Vampire # Starlight - disabled until reworked
+#      prob: 0.25
 
 - type: entity
   parent: BaseGameRule
@@ -250,6 +250,9 @@
     - prefRoles: [ Changeling ]
       max: 3
       playerRatio: 15
+      blacklist: #FH
+        tags: #FH
+          - IPC #FH
       briefing:
         text: changeling-role-greeting
         color: Red
@@ -276,7 +279,7 @@
   - type: RevolutionaryRule
   - type: SpecialLobbyContent
     music: "/Audio/_Starlight/Music/Lobby/Liberation.ogg"
-    background: "/Textures/_Starlight/LobbyScreens/rev-clown.webp"
+    background: RevClown
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
     definitions:
@@ -378,6 +381,8 @@
         components:
         - ZombieImmune
         - AntagImmune
+        tags: #FH
+          - IPC #FH
       briefing:
         text: zombie-patientzero-role-greeting
         color: Plum

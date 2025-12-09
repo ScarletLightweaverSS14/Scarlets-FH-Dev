@@ -1060,15 +1060,15 @@
   - type: Tag
     tags:
     - DrinkSpaceGlue
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: BoneGel
-  - type: SurgeryTool
-    speed: 2.4 #FarHorizons
+    speed: 2.4 
     startSound:
       path: "/Audio/Items/bikehorn.ogg"
     endSound:
       path: "/Audio/Items/Toys/pushHornHonk.ogg"
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   parent: BaseItem

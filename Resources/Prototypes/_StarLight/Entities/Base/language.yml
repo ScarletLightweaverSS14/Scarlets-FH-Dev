@@ -24,6 +24,7 @@
       - VoxPidgin
       - Scratch
       - Thaveyan
+      - Trinary # Far Horizons
 
 - type: entity
   id: BaseBorgiLanguages
@@ -52,6 +53,7 @@
       - VoxPidgin
       - Scratch
       - Thaveyan
+      - Trinary # Far Horizons
       - Dog
 
 - type: entity
@@ -66,3 +68,4 @@
     understands:
     - GalacticCommon
     - Machine
+    - Trinary # Far Horizons

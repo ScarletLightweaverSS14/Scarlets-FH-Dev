@@ -78,14 +78,16 @@
   - type: DeleteOnTrigger
   - type: StaticPrice
     price: 0
+  #FarHorizons Start
   - type: Scalpel
-  - type: SurgeryTool
-    speed: 2.4 #FarHorizons
+    speed: 2.4 
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
-
+  - type: SurgeryTool
+  #FarHorizons End
+  
 - type: entity
   parent: ShardBase
   id: ShardGlass

@@ -32,14 +32,15 @@
       - behavior: Screwing
         useSound: /Audio/Items/screwdriver.ogg
         SpeedModifier: 0.05
+  #FarHorizons Start
   - type: Scalpel
-  - type: SurgeryTool
-    speed: 1.7 #FarHorizons
+    speed: 1.7 
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
-# Starlight end
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   parent: BaseKnife
@@ -240,12 +241,15 @@
     sprite: Objects/Weapons/Melee/shiv.rsi
   - type: DisarmMalus
     malus: 0.225
+  #FarHorizons Start
   - type: SurgeryTool
-    speed: 2.1 #FarHorizons
+  - type: Scalpel
+    speed: 2.1 
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  #FarHorizons End
 
 - type: entity
   name: reinforced shiv

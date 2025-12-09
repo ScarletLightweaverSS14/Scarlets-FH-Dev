@@ -24,13 +24,13 @@
         Piercing: 6
     soundHit:
       path: "/Audio/Weapons/bladeslice.ogg"
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: Hemostat
-  - type: SurgeryTool
     speed: 2.3 #FarHorizons
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

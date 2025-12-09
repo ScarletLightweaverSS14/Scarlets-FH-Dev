@@ -1,4 +1,4 @@
-﻿#Airlocks
+﻿# Airlocks
 - type: construction
   id: FHAirlock
   graph: FHAirlock
@@ -22,3 +22,61 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+# Walls
+
+- type: construction
+  id: WallSyndie
+  graph: GirderSyndie
+  startNode: start
+  targetNode: wallsyndie
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ReinforcedWallSyndie
+  graph: GirderSyndie
+  startNode: start
+  targetNode: reinforcedWallSyndie
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+# Windows
+
+- type: construction
+  id: WindowSyndie
+  graph: WindowSyndie
+  startNode: start
+  targetNode: windowsyndie
+  category: construction-category-structures
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
+- type: construction
+  id: ReinforcedWindowSyndie
+  graph: WindowSyndie
+  startNode: start
+  targetNode: reinforcedWindowSyndie
+  category: construction-category-structures
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false

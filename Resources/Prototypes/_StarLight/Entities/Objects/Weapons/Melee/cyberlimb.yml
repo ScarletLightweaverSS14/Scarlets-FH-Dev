@@ -42,15 +42,15 @@
         Blunt: 0.5
   - type: Item
     sprite: _Starlight/Objects/Weapons/Melee/cyberchainsaw.rsi
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: BoneSaw
-  - type: SurgeryTool
-    speed: 1.7 #FarHorizons
+    speed: 1.7 
     startSound:
       path: /Audio/Weapons/chainsawwield.ogg
     endSound:
       path: /Audio/Weapons/chainsaw.ogg
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
   - type: Tag
     tags:
       - CyberHandItem

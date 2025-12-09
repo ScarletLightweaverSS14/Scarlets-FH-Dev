@@ -43,14 +43,20 @@
       Steel: 100
   - type: StaticPrice
     price: 30
-  # 🌟Starlight-start🌟
+
+  # FarHorizons Start
   - type: Hemostat
-  - type: SurgeryTool
     speed: 2.3 #FarHorizons
     startSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Starlight/Medical/Surgery/scalpel2.ogg
+  - type: WirecutterSurgery
+    startSound:
+      path: /Audio/Items/wirecutter.ogg
+  - type: SurgeryTool
+  # FarHorizons End
+  # 🌟Starlight-start🌟
   - type: ItemPrice
     priceCategory: tool_basic
   # 🌟Starlight-end🌟
@@ -101,12 +107,17 @@
   # 🌟Starlight-start🌟
   - type: ItemPrice
     priceCategory: tool_basic
+  # 🌟Starlight-end🌟
+  # FarHorizons Start  
   - type: SurgicalDrill
-  - type: SurgeryTool
-    speed: 2.6 #FarHorizons
+    speed: 2.6 
     endSound:
       path: /Audio/Weapons/smash.ogg
-  # 🌟Starlight-end🌟
+  - type: ScrewdriverSurgery
+    startSound:
+      /Audio/Items/screwdriver.ogg
+  - type: SurgeryTool
+  # FarHorizons End
 
 - type: entity
   name: wrench
@@ -153,6 +164,12 @@
   - type: ItemPrice
     priceCategory: tool_basic
   # Starlight-end
+  # FarHorizons Start
+  - type: WrenchSurgery
+    startSound:
+      path: /Audio/Items/ratchet.ogg
+  - type: SurgeryTool
+  # FarHorizons End
 
 - type: entity
   name: multitool
@@ -207,6 +224,12 @@
     - WirePanels
     - Airlocks
     - InspectingPower
+  # FarHorizons Start
+  - type: MultitoolSurgery
+    startSound:
+      path: /Audio/Items/multitool_drop.ogg
+  - type: SurgeryTool
+  # FarHorizons End
 
 - type: entity
   name: network configurator
@@ -314,13 +337,21 @@
         Piercing: 10
     soundHit:
       path: "/Audio/Items/drill_hit.ogg"
-  # 🌟Starlight-start🌟
-  - type: SurgicalDrill
-  - type: SurgeryTool
-    speed: 1.8 #FarHorizons
+  # FarHorizons Start
+  - type: SurgicalDrill 
+    speed: 1.8 
     startSound:
       path: /Audio/Items/drill_use.ogg
-  # 🌟Starlight-end🌟
+  - type: ScrewdriverSurgery
+    speed: 0.6 
+    startSound:
+      path: /Audio/Items/drill_use.ogg
+  - type: WrenchSurgery
+    speed: 0.6 
+    startSound:
+      path: /Audio/Items/drill_use.ogg
+  - type: SurgeryTool
+  # FarHorizons End
 
 - type: entity
   id: RCD

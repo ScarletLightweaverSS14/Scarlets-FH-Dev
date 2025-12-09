@@ -46,6 +46,20 @@
   equipment:
     back: ClothingBackpackDuffelVirology
 
+# PDA
+
+- type: loadout
+  id: SurgeonPDA
+  equipment:
+    id: SurgeonPDA
+
+- type: loadout
+  id: SeniorSurgeonPDA
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
+  equipment:
+    id: SeniorSurgeonPDA
 
 # Satchel
 
@@ -58,3 +72,25 @@
   id: VirologySatchel
   equipment:
     back: ClothingBackpackSatchelVirology
+
+# Surgeon Equipment
+
+- type: loadout
+  id: SurgeonEquipment
+  dummyEntity: LoadoutDummySurgeonEquipment
+  storage:
+    back:
+    - Scalpel 
+    - BoneGel
+    - Retractor
+    - Hemostat
+    - BoneSetter
+    - Cautery
+    - Saw
+  equipment:
+    pocket1: Drill
+
+- type: loadout
+  id: SurgeonDuffel
+  inhand:
+    - ClothingBackpackDuffelSurgeryFilled

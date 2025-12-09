@@ -19,6 +19,7 @@ using Content.Shared._FarHorizons.Medical.SurgeryOverhaul.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Medical.Healing;
 using Content.Shared.Damage;
+using Robust.Shared.Audio;
 //FarHorizons End
 
 namespace Content.Shared.Starlight.Medical.Surgery;
@@ -140,13 +141,30 @@ public abstract partial class SharedSurgerySystem
     //FarHorizons End
     private void OnStep(Entity<SurgeryStepComponent> ent, ref SurgeryStepEvent args)
     {
+        if(!_entitySystem.TryGetSingleton(args.StepProto, out var stepEnt)
+            || !TryComp(stepEnt, out SurgeryStepComponent? stepComp)) return;
+
         foreach (var reg in (ent.Comp.Tools ?? []).Values)
         {
             var tool = args.Tools.FirstOrDefault(x => HasComp(x, reg.Component.GetType()));
             if (tool == default) return;
+            
+            var specificToolComp = EntityManager.GetComponents(tool)
+                .OfType<ISurgeryToolComponent>();
 
-            if (_net.IsServer && TryComp(tool, out SurgeryToolComponent? toolComp) && toolComp.EndSound != null)
-                _audio.PlayPvs(toolComp.EndSound, tool);
+            SoundSpecifier? endSound = null;
+            foreach(var usedTool in specificToolComp)
+            {  
+                var requestedTool = stepComp.Tools?.FirstOrDefault().Key;
+                if(requestedTool != null)
+                    if(usedTool.ToolType.Contains(requestedTool))
+                    {
+                        endSound = usedTool.EndSound;
+                    }
+            }
+
+            if (_net.IsServer && TryComp(tool, out SurgeryToolComponent? toolComp) && endSound != null)
+                _audio.PlayPvs(endSound, tool);
             if (ent.Comp.ReagentId != null && _solutionContainerSystem.TryGetSolution(tool, "drink", out var solution))
                 _solutionContainerSystem.RemoveReagent(solution.Value, new ReagentQuantity(ent.Comp.ReagentId, ent.Comp.ReagentQuantity));
         }
@@ -310,24 +328,39 @@ public abstract partial class SharedSurgerySystem
                 var durationCap = duration * 2;
                 var durationToSuccessRate = 0f;
                 var bedSpeedMod = 2f;
+                var toolSpeed = 1f;
+                var toolSuccessRate = 1f;
+                SoundSpecifier? startSound = null;
+                var specificToolComp = EntityManager.GetComponents(tool)
+                    .OfType<ISurgeryToolComponent>();
 
+                foreach(var usedTool in specificToolComp)
+                {
+                    var requestedTool = stepComp.Tools?.FirstOrDefault().Key;
+                    if(requestedTool != null)
+                        if(usedTool.ToolType.Contains(requestedTool))
+                        {
+                            toolSpeed = usedTool.Speed;
+                            toolSuccessRate = usedTool.SuccessRate;
+                            startSound = usedTool.StartSound;
+                        }
+                }
+                    
                 if (TryComp(body, out BuckleComponent? buckle) && TryComp(buckle.BuckledTo, out SurgeryBedSpeedComponent? bedComp))
                     bedSpeedMod = bedComp.BedSpeedModifier;
-                duration = duration * toolComp.Speed * bedSpeedMod;
+
+                duration = duration * toolSpeed * bedSpeedMod;
                 if (duration > durationCap)
                 {
-                    durationToSuccessRate = (float)(Math.Pow((duration - durationCap) % 10, 2) / 100);
-                    if (durationToSuccessRate < 0.25)
-                        durationToSuccessRate = 0.25f;
+                    durationToSuccessRate = (float)Math.Clamp(Math.Pow(duration - durationCap, 2) / 100, 0.0, 0.75);
                     duration = durationCap;
                 }
-                if (toolComp.StartSound != null) _audio.PlayPvs(toolComp.StartSound, tool);
+                if (startSound != null) _audio.PlayPvs(startSound, tool);
 
-                var toolSuccessRate = toolComp.SuccessRate;
-                var totalSuccesRate = toolSuccessRate - durationToSuccessRate;
+                var totalSuccesRate = Math.Clamp(toolSuccessRate - durationToSuccessRate, 0.25, 1);
 
                 if (totalSuccesRate < SmallestSuccessRate)
-                    SmallestSuccessRate = totalSuccesRate;
+                    SmallestSuccessRate = (float)totalSuccesRate;
                 
             }
         bool didSurgeryFail = false;

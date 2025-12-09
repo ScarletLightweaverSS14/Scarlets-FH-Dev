@@ -47,15 +47,15 @@
     stealGroup: FireAxe
   - type: IgniteOnMeleeHit
     fireStacks: -4
-  # 🌟Starlight-start🌟
+  #FarHorizons Start
   - type: BoneSaw
-  - type: SurgeryTool
-    speed: 2.0 #FarHorizons
+    speed: 2.0 
     startSound:
       path: "/Audio/Effects/chop.ogg"
     endSound:
       path: "/Audio/Effects/chop.ogg"
-  # 🌟Starlight-end🌟
+  - type: SurgeryTool
+  #FarHorizons End
 
 - type: entity
   id: FireAxeFlaming

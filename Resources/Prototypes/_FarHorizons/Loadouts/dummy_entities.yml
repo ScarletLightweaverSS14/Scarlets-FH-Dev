@@ -1,0 +1,9 @@
+- type: entity
+  id: LoadoutDummySurgeonEquipment
+  categories: [ HideSpawnMenu ]
+  name: Surgical Equipment
+  description: A full set of surgical equipment for malpractice
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel

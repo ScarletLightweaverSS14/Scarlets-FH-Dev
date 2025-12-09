@@ -2,7 +2,6 @@
     "version": 1,
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/4f6190e2895e09116663ef282d3ce1d8b35c032e. Vox states by Flareguy for Space Station 14, dog states modified from base states by casiliuscestus (GitHub) for Space Station 14, color values and unshaded modified by JustAdler for https://github.com/ss14Starlight/space-station-14",
-    "copyright": "Color scheme, species, toggleable lights and unshaded by JustAdler for https://github.com/ss14Starlight/space-station-14",
     "size": {
         "x": 32,
         "y": 32

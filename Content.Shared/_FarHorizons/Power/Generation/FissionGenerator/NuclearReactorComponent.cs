@@ -4,10 +4,17 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Atmos;
 using Robust.Shared.Prototypes;
 using Content.Shared.Materials;
+using Content.Shared.DeviceLinking;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Power.Generation.FissionGenerator;
 
-[RegisterComponent, NetworkedComponent]
+// Ported and modified from goonstation by Jhrushbe.
+// CC-BY-NC-SA-3.0
+// https://github.com/goonstation/goonstation/blob/ff86b044/code/obj/nuclearreactor/nuclearreactor.dm
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class NuclearReactorComponent : Component
 {
     public static int ReactorGridWidth = 7;
@@ -22,9 +29,15 @@ public sealed partial class NuclearReactorComponent : Component
     /// </summary>
     public ReactorPartComponent?[,] ComponentGrid = new ReactorPartComponent[ReactorGridWidth, ReactorGridHeight];
 
+    /// <summary>
+    /// Dictionary of data that determines the reactor grid's visuals
+    /// </summary>
+    [AutoNetworkedField]
+    public Dictionary<Vector2i, ReactorCapVisualData> VisualData = [];
+
     // Woe, 3 dimensions be upon ye
     /// <summary>
-    /// 2D grid of lists of neutrons in each grid slot of the component grid.
+    /// 2D grid of lists of neutrons in each grid slot of the component grid
     /// </summary>
     public List<ReactorNeutron>[,] FluxGrid = new List<ReactorNeutron>[ReactorGridWidth, ReactorGridHeight];
 
@@ -42,7 +55,7 @@ public sealed partial class NuclearReactorComponent : Component
     /// <summary>
     /// Reactor casing temperature
     /// </summary>
-    [ViewVariables]
+    [DataField]
     public float Temperature = Atmospherics.T20C;
 
     /// <summary>
@@ -145,11 +158,6 @@ public sealed partial class NuclearReactorComponent : Component
     public int[,] NeutronGrid = new int[ReactorGridWidth, ReactorGridHeight];
 
     /// <summary>
-    /// Grid of entities that make up the visual reactor grid
-    /// </summary>
-    public NetEntity[,] VisualGrid = new NetEntity[ReactorGridWidth, ReactorGridHeight];
-
-    /// <summary>
     /// The selected prefab
     /// </summary>
     [DataField]
@@ -158,8 +166,8 @@ public sealed partial class NuclearReactorComponent : Component
     /// <summary>
     /// Flag indicating the reactor should apply the selected prefab
     /// </summary>
-    [ViewVariables]
-    public bool ApplyPrefab = true;
+    [DataField]
+    public bool ApplyPrefab = false;
 
     /// <summary>
     /// Material the reactor is made out of
@@ -173,6 +181,12 @@ public sealed partial class NuclearReactorComponent : Component
     public EntityUid? InletEnt;
     [ViewVariables]
     public EntityUid? OutletEnt;
+
+    [DataField("controlRodRetractPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
+    public string ControlRodRetractPort = "RetractControlRods";
+
+    [DataField("controlRodInsertPort", customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
+    public string ControlRodInsertPort = "InsertControlRods";
 
     #region Debug
     [ViewVariables(VVAccess.ReadOnly)]
@@ -188,4 +202,11 @@ public sealed partial class NuclearReactorComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public float TotalSpent = 0;
     #endregion
+}
+
+[Serializable, NetSerializable, DataDefinition]
+public sealed partial class ReactorCapVisualData
+{
+    public Color color = Color.Black;
+    public string cap = "";
 }

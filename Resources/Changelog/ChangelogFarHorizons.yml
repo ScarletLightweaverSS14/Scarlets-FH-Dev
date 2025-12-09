@@ -2540,5 +2540,718 @@ Entries:
   id: 40100
   time: '2025-11-23T15:52:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/401
+- author: KarusKardin
+  changes:
+  - message: Removed collision from Vitals Monitor
+    type: Tweak
+  id: 40800
+  time: '2025-11-27T20:44:35.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/408
+- author: R3v3l4t1on
+  changes:
+  - message: IPC/Protogen can no longer speak Machine. They can still understand it
+      however.
+    type: Remove
+  id: 40300
+  time: '2025-11-27T20:43:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/403
+- author: R3v3l4t1on
+  changes:
+  - message: Silicons can now understand Trinary.
+    type: Fix
+  id: 40301
+  time: '2025-11-27T20:43:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/403
+- author: Killer Tamashi
+  changes:
+  - message: Fixed IPCs rolling incorrect antags (Vamp/II/Ling) you can still pick
+      them in the menu, but the game won't select you as one.
+    type: Fix
+  id: 40500
+  time: '2025-11-27T21:20:42.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/405
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Proto-Resomi being poisoned by Amox. Didn't have an Avali organ,
+      they do now.
+    type: Fix
+  id: 40501
+  time: '2025-11-27T21:20:42.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/405
+- author: Scarlet Lightweaver
+  changes:
+  - message: Added CCbedsheets to the CC drobe as per request of a mentor
+    type: Add
+  id: 40700
+  time: '2025-11-27T21:43:19.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/407
+- author: jhrushbe
+  changes:
+  - message: 'Added a new lathe: nuclear fabricator.'
+    type: Add
+  id: 40400
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Added 26 new reactor parts made from a variety of materials.
+    type: Add
+  id: 40401
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Added a guidebook entry for the materials and their effects.
+    type: Add
+  id: 40402
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: 'Added a new material: plutonium.'
+    type: Add
+  id: 40403
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: 'Added a new machine: nuclear centrifuge.'
+    type: Add
+  id: 40404
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: The nuclear reactor and gas turbine now have device network ports to
+      allow for automated control.
+    type: Add
+  id: 40405
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Flatpacks for the nuclear reactor and gas turbine are now available in
+      the cargo request computer.
+    type: Add
+  id: 40406
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Basic reactor parts can be purchased from the cargo request computer.
+    type: Add
+  id: 40407
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Removed the ability for the protolathe to print reactor parts.
+    type: Remove
+  id: 40408
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: The gas turbine's animation now changes to reflect its speed.
+    type: Tweak
+  id: 40409
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: The gas turbine's UI now has -1000, -100, +100, and +1000 stator load
+      buttons.
+    type: Tweak
+  id: 40410
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Reactor part costs have been drastically decreased (10% for fuel rods).
+    type: Tweak
+  id: 40411
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Fuel rods consume fuel much faster (10x).
+    type: Tweak
+  id: 40412
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Fuel rods consume less fuel when doing nothing (half).
+    type: Tweak
+  id: 40413
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Bananium is now yellow.
+    type: Tweak
+  id: 40414
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Nuclear research is now split into tier 1 (Nuclear Power) and tier 2
+      (Nuclear Waste Recycling).
+    type: Tweak
+  id: 40415
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Control rods now have a chance to reflect a neutron rather than always
+      absorbing them.
+    type: Tweak
+  id: 40416
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: The nuclear reactor and gas turbine can now be unanchored if they're
+      in a safe state.
+    type: Tweak
+  id: 40417
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: The nuclear reactor's hitbox has been slightly shrunk in order to match
+      the sprite.
+    type: Tweak
+  id: 40418
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: jhrushbe
+  changes:
+  - message: Reactor and Turbine will no longer leave behind bits of pipe when deleted.
+    type: Fix
+  id: 40419
+  time: '2025-11-28T14:52:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/404
+- author: Killer Tamashi
+  changes:
+  - message: Added Briefing Rooms to security (utilizes existing rooms, doesn't make
+      new ones)
+    type: Add
+  id: 41100
+  time: '2025-11-28T14:54:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/411
+- author: Killer Tamashi
+  changes:
+  - message: Added new content to maps (Trinary Comms / Sec Experimental / Sec shuttle
+      Console)
+    type: Add
+  id: 41101
+  time: '2025-11-28T14:54:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/411
+- author: Killer Tamashi
+  changes:
+  - message: Changed fland's AI turrets to be Command, to work with Command turret
+      control panels as per request.
+    type: Tweak
+  id: 41102
+  time: '2025-11-28T14:54:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/411
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Oasis sec disposals being disconnected
+    type: Fix
+  id: 41103
+  time: '2025-11-28T14:54:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/411
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Certain armories missing turret control consoles
+    type: Fix
+  id: 41104
+  time: '2025-11-28T14:54:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/411
+- author: KarusKardin
+  changes:
+  - message: Corrected Capitalization for Ntrep access locale
+    type: Fix
+  id: 42000
+  time: '2025-11-29T16:10:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/420
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: New Salvage Bag resprite by Hanz
+    type: Add
+  id: 41400
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: New Security Alert Level Holotable sprited by Abby and Animated by Jaxon.
+      Now you can see security alert levels clearly!
+    type: Add
+  id: 41401
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: New Security Wanted Holotable sprited by Abby and Animated by Jaxon.
+      Now officers have another place to add criminal records on the go!
+    type: Add
+  id: 41402
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: A couple of previous Holotables had their animations bugged. They aren't
+      bugged anymore.
+    type: Fix
+  id: 41403
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: All Holotables (except alert level) now draw power and will shut down
+      when power goes down.
+    type: Tweak
+  id: 41404
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: New Syndicate Solid Wall sprited by Abby. Let the mapping begin.
+    type: Add
+  id: 41405
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: Plastitanium Wall resprited by Abby. Whatever you do, don't ask her why
+      it looks the same as the syndie solid wall. We're still cleaning up the blood
+      from the last person that asked.
+    type: Tweak
+  id: 41406
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: New Syndicate Reinforced Solid Wall, Window, Reinforced Window for mapping
+      to commence.
+    type: Add
+  id: 41407
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: CorruptOmega, Abby, Jaxon, Hanz
+  changes:
+  - message: Began purging the Heretic under case names in all files touched upon.
+      You shall be cleansed in the Grammar Lords holy fire.
+    type: Fix
+  id: 41408
+  time: '2025-11-29T16:16:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/414
+- author: KarusKardin
+  changes:
+  - message: Courtroom Airlocks/Door Electronics
+    type: Add
+  id: 41409
+  time: '2025-11-29T16:30:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/419
+- author: KarusKardin
+  changes:
+  - message: Magistrate Airlocks/Door Electronics
+    type: Add
+  id: 41410
+  time: '2025-11-29T16:30:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/419
+- author: KarusKardin
+  changes:
+  - message: BSO Airlocks/Door Electronics
+    type: Add
+  id: 41411
+  time: '2025-11-29T16:30:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/419
+- author: KarusKardin
+  changes:
+  - message: NTR Airlocks/Door Electronics
+    type: Add
+  id: 41412
+  time: '2025-11-29T16:30:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/419
+- author: princess_gurchi
+  changes:
+  - message: Buffed bonus rewards from salvage missions across the board. They should
+      no longer feel like a waste of time
+    type: Tweak
+  id: 41800
+  time: '2025-11-29T16:32:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/418
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: upstream
+    type: Add
+  id: 41500
+  time: '2025-11-29T16:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/415
+- author: AthenaAI
+  changes:
+  - message: Added new surgery tools (screwdriver, wrench, crowbar, and etc)
+    type: Add
+  id: 42600
+  time: '2025-11-29T22:33:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/426
+- author: AthenaAI
+  changes:
+  - message: Added IPC custom surgeries that use the new tools instead
+    type: Add
+  id: 42601
+  time: '2025-11-29T22:33:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/426
+- author: PubliclyExecutedPig
+  changes:
+  - message: tweaked space ninja suit a little
+    type: Tweak
+  id: 28100
+  time: '2025-11-30T12:11:50.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/281
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Fixed paramedic backpack loadout on round start.
+    type: Fix
+  id: 43100
+  time: '2025-11-30T13:57:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/431
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: set default CMO backpack to medical backpack.
+    type: Tweak
+  id: 43101
+  time: '2025-11-30T13:57:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/431
+- author: RorororoIDK
+  changes:
+  - message: added 3 flat heat and pierce resist to the Maxim and Goliath hardsuits
+      so they dont get completely outpaced by literally any piece of armor on FH.
+    type: Tweak
+  id: 42900
+  time: '2025-11-30T16:37:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/429
+- author: RorororoIDK
+  changes:
+  - message: lowered the price of Maxim and Advanced mining hardsuit to 1200 tickets
+      in their respective vendors.
+    type: Tweak
+  id: 42901
+  time: '2025-11-30T16:37:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/429
+- author: KarusKardin
+  changes:
+  - message: Surgeon Loadouts (No longer shared with Medical Doctor)
+    type: Add
+  id: 42800
+  time: '2025-11-30T16:37:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/428
+- author: KarusKardin
+  changes:
+  - message: Surgeon Equipment Loadout Options (No longer forced to be a duffel bag)
+    type: Add
+  id: 42801
+  time: '2025-11-30T16:37:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/428
+- author: CorruptOmega
+  changes:
+  - message: Alert Table now has the missing alert levels utilizing either blue/red
+      colors as needed.
+    type: Fix
+  id: 43600
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: Robotics Control Consoles now have their screens correctly turn off when
+      power goes out.
+    type: Fix
+  id: 43601
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: Surgeon now spawns with their own PDA and ID card so they can stop using
+      the medical doctors stuff.
+    type: Add
+  id: 43602
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: Ore Bags will stop telling the miners they're wrong for activating the
+      magnet. Pesky Ore Bags.
+    type: Fix
+  id: 43603
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: Mark 1 Rifles now have a faster firing speed so they are more usable
+      for salvage.
+    type: Tweak
+  id: 43604
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: HoS Glasses will no longer be forced onto their faces when you select
+      any eyewear in their Loadout. Wear that Security Visor if you want to!
+    type: Fix
+  id: 43605
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: A bunch of stuff has been capitalized in the Capitalization Crusade.
+      Be Purged in the Grammar Lord's Holy Fire!
+    type: Tweak
+  id: 43606
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: CorruptOmega
+  changes:
+  - message: Backend fix to RSI failures after upstream merge....
+    type: Fix
+  id: 43607
+  time: '2025-12-02T22:12:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/436
+- author: AthenaAI
+  changes:
+  - message: Adds hotbar actions to the Analyze Patient, Analyze Structure and Check
+      Crime Verbs added by the Expanded Cartridge PR.
+    type: Add
+  id: 43800
+  time: '2025-12-02T22:46:34.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/438
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Fixed airlocks missing fans
+    type: Fix
+  id: 43700
+  time: '2025-12-02T22:54:01.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/437
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Screens.
+    type: Add
+  id: 43701
+  time: '2025-12-02T22:54:01.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/437
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Paper.
+    type: Add
+  id: 43702
+  time: '2025-12-02T22:54:01.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/437
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Changed Syndicate Announcement computer to recruitment
+    type: Tweak
+  id: 43703
+  time: '2025-12-02T22:54:01.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/437
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Gravity.
+    type: Fix
+  id: 43704
+  time: '2025-12-02T22:54:01.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/437
+- author: Killer Tamashi
+  changes:
+  - message: Added Subspecies Entries in the guidebook.
+    type: Add
+  id: 43500
+  time: '2025-12-03T16:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/435
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Proto-vox being poisoned by welder fuel and not being able to eat
+      trash.
+    type: Fix
+  id: 43501
+  time: '2025-12-03T16:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/435
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Protogens not being able to eat certain boards. (I forgor.)
+    type: Fix
+  id: 43502
+  time: '2025-12-03T16:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/435
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Proto- Feline/Laspi/Thaven spawnmenu entities being incorrect
+    type: Fix
+  id: 43503
+  time: '2025-12-03T16:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/435
+- author: Roro, Vonte
+  changes:
+  - message: Added the Proto-Kinetic Shotgun, a variant of the PKA, available in both
+      Salvage and Mining ticket vendors. Sprites by Vonte
+    type: Add
+  id: 43504
+  time: '2025-12-03T17:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/434
+- author: Roro, Vonte
+  changes:
+  - message: Tweaked resists on Spationaut Lead Hardsuit, 15% blunt to 30%, 15% slash
+      to 30%, 15% pierce to 30%, 20% caustic to 30% and added 30% heat resist as it
+      had none.
+    type: Tweak
+  id: 43505
+  time: '2025-12-03T17:22:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/434
+- author: princess_gurchi & suggestedone9 (shuttle design)
+  changes:
+  - message: NT-34 "Expeditioneer" - New salvage shuttle
+    type: Add
+  id: 44400
+  time: '2025-12-03T21:42:25.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/444
+- author: princess_gurchi & suggestedone9 (shuttle design)
+  changes:
+  - message: NT-99 "Asteroid Cracker" - New mining shuttle
+    type: Add
+  id: 44401
+  time: '2025-12-03T21:42:25.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/444
+- author: princess_gurchi & suggestedone9 (shuttle design)
+  changes:
+  - message: 'New salvage mission: Shutdown. Find and destroy devices around the dungeon.'
+    type: Add
+  id: 44402
+  time: '2025-12-03T21:42:25.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/444
+- author: princess_gurchi & suggestedone9 (shuttle design)
+  changes:
+  - message: Allow Collect salvage mission to spawn in caves, reducing overall "found
+      coordinates" mission probability
+    type: Tweak
+  id: 44403
+  time: '2025-12-03T21:42:25.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/444
+- author: princess_gurchi
+  changes:
+  - message: Split EMP effects that IPCs take between all of their limbs. That means
+      robots can augment themselves with human parts to be better protected against
+      EMP
+    type: Tweak
+  id: 44700
+  time: '2025-12-04T17:26:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/447
+- author: Roro
+  changes:
+  - message: Added flat resists to Detective coats, Infiltrator hardsuit, Experimental
+      security hardsuit and other armors/coats so they can keep up with with existing
+      armor values.
+    type: Tweak
+  id: 45000
+  time: '2025-12-05T09:41:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/450
+- author: Roro
+  changes:
+  - message: Added nonlethal loadout options for Detective and Warden, as well as
+      Sidearm option (just a MK58 anyway) for HoS.
+    type: Tweak
+  id: 45001
+  time: '2025-12-05T09:41:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/450
+- author: Roro
+  changes:
+  - message: Added a 10% slowdown to Infiltrator hardsuit since it had none and having
+      no slowdown on a hardsuit is silly, now more of a variant rather than a direct
+      upgrade over the default bloodred.
+    type: Tweak
+  id: 45002
+  time: '2025-12-05T09:41:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/450
+- author: Roro
+  changes:
+  - message: Added a hailer to Infiltrator hardsuit since it didnt have one.
+    type: Tweak
+  id: 45003
+  time: '2025-12-05T09:41:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/450
+- author: Roro
+  changes:
+  - message: Combat boots and Sec winter boots are now effectively jackboots (less
+      slowdown on lower health)
+    type: Tweak
+  id: 45004
+  time: '2025-12-05T09:41:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/450
+- author: AthenaAI
+  changes:
+  - message: Added filtering for certain surgeries to show if you have cyberlimbs.
+    type: Add
+  id: 44500
+  time: '2025-12-05T19:00:35.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/445
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Added mining access to old style doors that mining shuttle uses
+    type: Fix
+  id: 45300
+  time: '2025-12-06T13:28:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/453
+- author: FAR HORIZONS TEAM
+  changes:
+  - message: Added contra crates to new salvage shuttle. An important tool for catching
+      fish.
+    type: Tweak
+  id: 45301
+  time: '2025-12-06T13:28:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/453
+- author: jhrushbe
+  changes:
+  - message: Added the reactor monitor computer, for controlling the reactor from
+      a distance.
+    type: Add
+  id: 45600
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
+- author: jhrushbe
+  changes:
+  - message: Nuclear reactor and gas turbine are no longer rotationally challenged.
+    type: Tweak
+  id: 45601
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
+- author: jhrushbe
+  changes:
+  - message: Nuclear reactor lights adjusted slightly to better match source.
+    type: Tweak
+  id: 45602
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
+- author: jhrushbe
+  changes:
+  - message: Fixed nuclear centrifuge not producing as much plutonium as it should.
+    type: Fix
+  id: 45603
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
+- author: jhrushbe
+  changes:
+  - message: Fixed a bug where gas channels deleted every neutron they touched.
+    type: Fix
+  id: 45604
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
+- author: jhrushbe
+  changes:
+  - message: Fixed a bug where the reactor would not update its visuals after being
+      unanchored.
+    type: Fix
+  id: 45605
+  time: '2025-12-07T14:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/456
 Order: -1
 
