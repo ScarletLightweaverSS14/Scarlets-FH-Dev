@@ -830,6 +830,22 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (HasComp<DisarmProneComponent>(disarmed))
             return 0.0f;
 
+        // CQC integration: Check if disarmer has CQC active
+        if (TryComp<Content.Shared._FarHorizons.CQC.CQCComponent>(disarmer, out var cqc) && cqc.Active)
+        {
+            // If CQC user is executing a combo technique, guarantee full disarm power (0.0f = 0% failure = 100% success with max stamina damage)
+            if (cqc.GuaranteeNextDisarm)
+            {
+                // Reset the flag after checking it
+                cqc.GuaranteeNextDisarm = false;
+                Dirty(disarmer, cqc);
+                return 0.0f;
+            }
+            
+            // Normal CQC shoves: Always succeed at pushing but with reduced stamina damage (0.85 failure = low stun, just pushes)
+            return 0.85f;
+        }
+
         var chance = disarmerComp.BaseDisarmFailChance;
 
         if (inTargetHand != null && TryComp<DisarmMalusComponent>(inTargetHand, out var malus))

@@ -100,12 +100,21 @@ public abstract class SharedCQCSystem : EntitySystem
         if (!component.Active || args.Handled)
             return;
 
-        // Track shove (disarm) in attack sequence
-        TrackAttack(uid, CQCAttackType.Shove, component);
+        // Check for technique execution BEFORE tracking this shove
+        var technique = CheckForTechnique(component);
         
-        // Reset guarantee flag after use
-        component.GuaranteeNextDisarm = false;
-        Dirty(uid, component);
+        if (technique != CQCTechnique.None)
+        {
+            // Execute technique
+            ExecuteTechnique(uid, args.Target, technique, component);
+            
+            // Reset combo immediately after technique
+            ResetCombo(uid, component);
+            return; // Exit early to prevent tracking this shove
+        }
+
+        // Track shove (disarm) in attack sequence only if no technique
+        TrackAttack(uid, CQCAttackType.Shove, component);
     }
 
     private void OnDisarmAttempt(EntityUid uid, CQCComponent component, ref DisarmAttemptEvent args)
@@ -174,22 +183,25 @@ public abstract class SharedCQCSystem : EntitySystem
         if (!component.Active || args.HitEntities.Count == 0)
             return;
 
-        // Track attack in sequence
-        TrackAttack(uid, CQCAttackType.Attack, component);
-
-        // Check for technique execution
+        // Check for technique execution BEFORE tracking this attack
         var technique = CheckForTechnique(component);
         
-        foreach (var target in args.HitEntities)
+        if (technique != CQCTechnique.None)
         {
-            if (technique != CQCTechnique.None)
-            {
-                ExecuteTechnique(uid, target, technique, component);
-            }
+            // Execute technique only on first target to prevent multi-trigger
+            var target = args.HitEntities[0];
+            ExecuteTechnique(uid, target, technique, component);
+            
+            // Reset combo immediately after technique - DON'T track this attack
+            ResetCombo(uid, component);
+            return; // Exit early to prevent tracking this attack
         }
 
-        // Play combo sound
-        if (component.ComboSound != null && component.ComboCount > 1)
+        // Track attack in sequence only if no technique was executed
+        TrackAttack(uid, CQCAttackType.Attack, component);
+
+        // Play combo sound for normal hits
+        if (component.ComboCount > 1 && component.ComboSound != null)
         {
             _audio.PlayPvs(component.ComboSound, uid);
         }
@@ -318,12 +330,6 @@ public abstract class SharedCQCSystem : EntitySystem
 
         var techEvent = new CQCTechniqueExecutedEvent(user, target, technique);
         RaiseLocalEvent(user, ref techEvent);
-
-        // Reset combo after technique (except for choke which is ongoing)
-        if (technique != CQCTechnique.DB_Choke)
-        {
-            ResetCombo(user, component);
-        }
     }
 
     private void ExecuteSweep(EntityUid user, EntityUid target, CQCComponent component)
@@ -354,13 +360,25 @@ public abstract class SharedCQCSystem : EntitySystem
 
     private void ExecuteUppercut(EntityUid user, EntityUid target, CQCComponent component)
     {
+        // Check if target is down - if so, kick instead of uppercut
+        var isDown = _standing.IsDown(target);
+        
         // Deal 35 blunt damage
         var damage = new DamageSpecifier { DamageDict = { ["Blunt"] = 35f } };
         _damageable.TryChangeDamage(target, damage);
 
-        _popup.PopupEntity("DB_UPPERCUT! Devastating strike!", user, user, PopupType.Large);
-        _popup.PopupEntity($"{Name(user)} delivers a devastating uppercut!", target, target, PopupType.LargeCaution);
-        _popup.PopupEntity($"{Name(user)} uppercuts {Name(target)}!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == target), true, PopupType.Medium);
+        if (isDown)
+        {
+            _popup.PopupEntity("DB_KICK! You kick them while they're down!", user, user, PopupType.Large);
+            _popup.PopupEntity($"{Name(user)} kicks you while you're down!", target, target, PopupType.LargeCaution);
+            _popup.PopupEntity($"{Name(user)} kicks {Name(target)} while they're down!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == target), true, PopupType.Medium);
+        }
+        else
+        {
+            _popup.PopupEntity("DB_UPPERCUT! Devastating strike!", user, user, PopupType.Large);
+            _popup.PopupEntity($"{Name(user)} delivers a devastating uppercut!", target, target, PopupType.LargeCaution);
+            _popup.PopupEntity($"{Name(user)} uppercuts {Name(target)}!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == target), true, PopupType.Medium);
+        }
     }
 
     private void ExecuteTackle(EntityUid user, EntityUid target, CQCComponent component)
@@ -369,26 +387,19 @@ public abstract class SharedCQCSystem : EntitySystem
         component.GuaranteeNextDisarm = true;
         Dirty(user, component);
 
-        // Stamina crit both user and target
-        if (TryComp<StaminaComponent>(target, out var targetStamina))
-        {
-            var damage = new DamageSpecifier { DamageDict = { ["Stamina"] = targetStamina.CritThreshold } };
-            _damageable.TryChangeDamage(target, damage);
-        }
-
-        if (TryComp<StaminaComponent>(user, out var userStamina))
-        {
-            var damage = new DamageSpecifier { DamageDict = { ["Stamina"] = userStamina.CritThreshold } };
-            _damageable.TryChangeDamage(user, damage);
-        }
-
-        // Make both fall down
+        // Chest kick - stun the target and deal damage
+        _stun.TryAddStunDuration(target, TimeSpan.FromSeconds(4));
+        
+        // Deal significant blunt damage to the chest
+        var damage = new DamageSpecifier { DamageDict = { ["Blunt"] = 25f } };
+        _damageable.TryChangeDamage(target, damage);
+        
+        // Knockdown the target
         _standing.Down(target);
-        _standing.Down(user);
 
-        _popup.PopupEntity("DB_TACKLE! You tackle them to the ground!", user, user, PopupType.Large);
-        _popup.PopupEntity($"{Name(user)} tackles you to the ground!", target, target, PopupType.LargeCaution);
-        _popup.PopupEntity($"{Name(user)} tackles {Name(target)} to the ground!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == target), true, PopupType.Medium);
+        _popup.PopupEntity("DB_CHEST_KICK! You kick them in the chest!", user, user, PopupType.Large);
+        _popup.PopupEntity($"{Name(user)} kicks you in the chest!", target, target, PopupType.LargeCaution);
+        _popup.PopupEntity($"{Name(user)} kicks {Name(target)} in the chest!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == target), true, PopupType.Medium);
     }
 
     private void ExecuteChoke(EntityUid user, EntityUid target, CQCComponent component)

@@ -85,7 +85,7 @@ public sealed partial class CQCComponent : Component
     /// Sound to play when achieving a combo.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public SoundSpecifier? ComboSound = new SoundPathSpecifier("/Audio/Effects/swoosh.ogg");
+    public SoundSpecifier? ComboSound = null; // Disabled for now
 
     /// <summary>
     /// Whether this CQC user can perform takedowns (special attack at high combo).
