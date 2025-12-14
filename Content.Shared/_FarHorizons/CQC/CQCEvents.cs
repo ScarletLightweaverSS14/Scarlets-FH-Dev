@@ -11,7 +11,8 @@ public enum CQCTechnique
     DB_Sweep,    // Shove + Attack: Stun + 20% stamina + 15 blunt
     DB_Uppercut, // Attack + Attack: 35 blunt (or kick if target is down)
     DB_Tackle,   // Shove + Shove: Chest kick - 4s stun, 25 blunt, knockdown
-    DB_Choke     // Drag + Shove: Chokehold with DoT damage
+    DB_Choke,    // Drag + Shove: Chokehold with DoT damage
+    DB_Throw     // Drag + Shove + RMB: Throw target really far in direction faced
 }
 
 /// <summary>

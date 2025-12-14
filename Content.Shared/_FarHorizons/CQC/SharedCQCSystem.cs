@@ -6,10 +6,12 @@ using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
+using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -27,6 +29,9 @@ public abstract class SharedCQCSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly INetManager _netMan = default!;
 
     // Combo patterns for techniques
     private static readonly Dictionary<CQCTechnique, CQCAttackType[]> TechniquePatterns = new()
@@ -34,7 +39,8 @@ public abstract class SharedCQCSystem : EntitySystem
         { CQCTechnique.DB_Sweep, new[] { CQCAttackType.Shove, CQCAttackType.Attack } },
         { CQCTechnique.DB_Uppercut, new[] { CQCAttackType.Attack, CQCAttackType.Attack } },
         { CQCTechnique.DB_Tackle, new[] { CQCAttackType.Shove, CQCAttackType.Shove } },
-        { CQCTechnique.DB_Choke, new[] { CQCAttackType.Drag, CQCAttackType.Shove } }
+        { CQCTechnique.DB_Choke, new[] { CQCAttackType.Drag, CQCAttackType.Shove } },
+        { CQCTechnique.DB_Throw, new[] { CQCAttackType.Drag, CQCAttackType.Shove } }
     };
 
     private static readonly Dictionary<CQCTechnique, string> TechniqueNames = new()
@@ -42,7 +48,8 @@ public abstract class SharedCQCSystem : EntitySystem
         { CQCTechnique.DB_Sweep, "Shove → Attack" },
         { CQCTechnique.DB_Uppercut, "Attack → Attack" },
         { CQCTechnique.DB_Tackle, "Shove → Shove" },
-        { CQCTechnique.DB_Choke, "Drag → Shove" }
+        { CQCTechnique.DB_Choke, "Drag → Shove" },
+        { CQCTechnique.DB_Throw, "Drag → Shove" }
     };
 
     public override void Initialize()
@@ -56,6 +63,7 @@ public abstract class SharedCQCSystem : EntitySystem
         SubscribeLocalEvent<CQCComponent, DisarmAttemptEvent>(OnDisarmAttempt);
         SubscribeLocalEvent<CQCComponent, PullStartedMessage>(OnPullStarted);
         SubscribeLocalEvent<CQCComponent, PullStoppedMessage>(OnPullStopped);
+        SubscribeAllEvent<DisarmAttackEvent>(OnDisarmAttack);
     }
 
     public override void Update(float frameTime)
@@ -108,19 +116,64 @@ public abstract class SharedCQCSystem : EntitySystem
             // Execute technique
             ExecuteTechnique(uid, args.Target, technique, component);
             
+            // Mark event as handled AND clear popup to prevent vanilla system from showing messages
+            args.Handled = true;
+            args.PopupPrefix = string.Empty;
+            
             // Reset combo immediately after technique
             ResetCombo(uid, component);
             return; // Exit early to prevent tracking this shove
         }
 
         // Track shove (disarm) in attack sequence only if no technique
+        // Set combo target
+        component.ComboTarget = args.Target;
         TrackAttack(uid, CQCAttackType.Shove, component);
+    }
+
+    private void OnDisarmAttack(DisarmAttackEvent msg, EntitySessionEventArgs args)
+    {
+        if (args.SenderSession.AttachedEntity is not {} user)
+            return;
+
+        if (!TryComp<CQCComponent>(user, out var component) || !component.Active)
+            return;
+
+        var target = GetEntity(msg.Target);
+        if (target == null)
+            return;
+
+        // Check if this is a throw attempt (RMB on pulled entity with Drag combo ready)
+        if (component.LastPulledEntity != null && target == component.LastPulledEntity)
+        {
+            // Check if we have Drag in sequence (start of throw combo)
+            if (component.AttackSequence.Count > 0 && 
+                component.AttackSequence[0] == CQCAttackType.Drag)
+            {
+                // This is the throw combo! Set combo target, track shove, execute throw, and mark to cancel disarm
+                component.ComboTarget = target.Value;
+                TrackAttack(user, CQCAttackType.Shove, component);
+                ExecuteThrow(user, target.Value, component);
+                ResetCombo(user, component);
+                // Set flag to cancel the disarm in DisarmAttemptEvent
+                component.ThrowPending = true;
+                return;
+            }
+        }
     }
 
     private void OnDisarmAttempt(EntityUid uid, CQCComponent component, ref DisarmAttemptEvent args)
     {
         if (!component.Active)
             return;
+
+        // If throw is pending, cancel the disarm
+        if (component.ThrowPending)
+        {
+            args.Cancelled = true;
+            component.ThrowPending = false;
+            return;
+        }
 
         // CQC users always succeed at the shove push (no RNG)
         // But only guarantee disarm if we're doing a combo technique
@@ -136,7 +189,9 @@ public abstract class SharedCQCSystem : EntitySystem
         if (!component.Active)
             return;
 
-        // Track drag in attack sequence
+        // Track drag in attack sequence and remember who we're pulling
+        component.LastPulledEntity = args.PulledUid;
+        component.ComboTarget = args.PulledUid;
         TrackAttack(uid, CQCAttackType.Drag, component);
     }
 
@@ -149,6 +204,12 @@ public abstract class SharedCQCSystem : EntitySystem
         if (component.ChokingTarget == args.PulledUid)
         {
             StopChoking(uid, component);
+        }
+        
+        // Clear last pulled entity when pull stops
+        if (component.LastPulledEntity == args.PulledUid)
+        {
+            component.LastPulledEntity = null;
         }
     }
 
@@ -183,13 +244,14 @@ public abstract class SharedCQCSystem : EntitySystem
         if (!component.Active || args.HitEntities.Count == 0)
             return;
 
+        var target = args.HitEntities[0];
+
         // Check for technique execution BEFORE tracking this attack
         var technique = CheckForTechnique(component);
         
         if (technique != CQCTechnique.None)
         {
             // Execute technique only on first target to prevent multi-trigger
-            var target = args.HitEntities[0];
             ExecuteTechnique(uid, target, technique, component);
             
             // Reset combo immediately after technique - DON'T track this attack
@@ -198,7 +260,19 @@ public abstract class SharedCQCSystem : EntitySystem
         }
 
         // Track attack in sequence only if no technique was executed
-        TrackAttack(uid, CQCAttackType.Attack, component);
+        // Set or verify combo target
+        if (component.ComboTarget == null || component.ComboTarget == target)
+        {
+            component.ComboTarget = target;
+            TrackAttack(uid, CQCAttackType.Attack, component);
+        }
+        else
+        {
+            // Different target, reset combo
+            ResetCombo(uid, component);
+            component.ComboTarget = target;
+            TrackAttack(uid, CQCAttackType.Attack, component);
+        }
 
         // Play combo sound for normal hits
         if (component.ComboCount > 1 && component.ComboSound != null)
@@ -326,6 +400,9 @@ public abstract class SharedCQCSystem : EntitySystem
             case CQCTechnique.DB_Choke:
                 ExecuteChoke(user, target, component);
                 break;
+            case CQCTechnique.DB_Throw:
+                // DB_THROW is handled in OnThrowAttempt, not here
+                break;
         }
 
         var techEvent = new CQCTechniqueExecutedEvent(user, target, technique);
@@ -445,6 +522,20 @@ public abstract class SharedCQCSystem : EntitySystem
         _popup.PopupEntity($"{Name(user)} is choking you!", target, target, PopupType.MediumCaution);
     }
 
+    private void ExecuteThrow(EntityUid user, EntityUid thrown, CQCComponent component)
+    {
+        // Get user's facing direction
+        var userXform = Transform(user);
+        var direction = userXform.LocalRotation.ToWorldVec();
+        
+        // Throw with MUCH enhanced velocity - really far!
+        _throwing.TryThrow(thrown, direction * 25f, 25f, user, pushbackRatio: 0f);
+
+        _popup.PopupEntity("DB_THROW! You hurl them away!", user, user, PopupType.Large);
+        _popup.PopupEntity($"{Name(user)} hurls you through the air!", thrown, thrown, PopupType.LargeCaution);
+        _popup.PopupEntity($"{Name(user)} hurls {Name(thrown)} through the air!", user, Filter.PvsExcept(user).RemoveWhereAttachedEntity(e => e == thrown), true, PopupType.Medium);
+    }
+
     private void StopChoking(EntityUid uid, CQCComponent component)
     {
         if (component.ChokingTarget == null)
@@ -508,6 +599,8 @@ public abstract class SharedCQCSystem : EntitySystem
         component.ComboCount = 0;
         component.AttackSequence.Clear();
         component.ComboText = string.Empty;
+        component.ComboTarget = null;
+        component.LastPulledEntity = null;
         
         // Stop any active choking
         if (component.ChokingTarget != null)

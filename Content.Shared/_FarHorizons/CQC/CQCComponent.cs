@@ -49,7 +49,7 @@ public sealed partial class CQCComponent : Component
     /// Time in seconds before combo resets if no attacks are made.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float ComboTimeout = 3f;
+    public float ComboTimeout = 5f;
 
     /// <summary>
     /// Time when the last attack was made for combo tracking.
@@ -165,4 +165,22 @@ public sealed partial class CQCComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public bool GuaranteeNextDisarm = false;
+
+    /// <summary>
+    /// Last entity that was pulled (for throw detection).
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
+    public EntityUid? LastPulledEntity;
+
+    /// <summary>
+    /// Entity we're currently building combo against.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
+    public EntityUid? ComboTarget;
+
+    /// <summary>
+    /// Flag to indicate a throw is pending and the next disarm should be cancelled.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool ThrowPending = false;
 }
