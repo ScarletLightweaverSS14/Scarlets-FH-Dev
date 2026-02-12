@@ -1,0 +1,22 @@
+# 120mm Grenade Ammunition
+
+- type: entity
+  id: Grenade120mmBlast
+  name: 120mm blast grenade
+  parent: BaseGrenade
+  description: A devastating 120mm blast grenade round designed for the CYREXA artillery system.
+  components:
+  - type: Tag
+    tags:
+    - Grenade
+  - type: CartridgeAmmo
+    proto: BulletGrenade120mmBlast
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    layers:
+    - state: blast
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: blast
+    suffix: false

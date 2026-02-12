@@ -1,0 +1,21 @@
+# 120mm Grenade Projectiles
+
+- type: entity
+  id: BulletGrenade120mmBlast
+  name: 120mm blast grenade
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  description: A massive 120mm explosive projectile.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: grenade
+    scale: 1.5, 1.5
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 300 # Much larger blast radius than standard grenades
+    intensitySlope: 5
+    maxIntensity: 20
+    canCreateVacuum: true

@@ -1,0 +1,106 @@
+# NTSF Artillery Cannons
+
+- type: entity
+  id: ShuttleGunCyrexa120mm
+  parent: ShuttleGunBase
+  name: NTSF-CYREXA-120mm Dual Cannon
+  description: An advanced dual-barrel 120mm artillery system designed for devastating ship-to-ship combat. Fires in bursts of 2 rounds with a lengthy cooldown period. Requires a 120mm grenade cartridge.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Shuttles/ShuttleArtillery/cyrexa120mm.rsi
+    state: space_artillery
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    projectileSpeed: 50
+    fireRate: 2.0
+    shotsPerBurst: 2
+    selectedMode: Burst
+    availableModes:
+      - Burst
+    cameraRecoilScalar: 0
+    soundGunshot:
+      path: /Audio/_FarHorizons/Machines/ShuttleArtillery/uaf_cyrexa_452.ogg
+      params:
+        variation: 0.05
+        volume: 5
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: UseDelay
+    delay: 60.0  # 1 minute cooldown
+  - type: MagazineAmmoProvider
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        priority: 2
+        whitelist:
+          tags:
+          - MagazineGrenade120mm
+        insertSound:
+          path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+          params:
+            pitch: 1.5
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+
+# Apollo Heavy Laser Cannon
+
+- type: entity
+  id: ShuttleGunApollo
+  parent: ShuttleGunBase
+  name: NTSF-Apollo-Laser Railgun
+  description: An advanced high-powered laser cannon system designed for devastating precision strikes. Features a 30-second cooldown between shots. Uses power cages to fire.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Shuttles/ShuttleArtillery/apollo.rsi
+    state: space_artillery
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    cameraRecoilScalar: 0
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/ship_perforator.ogg
+      params:
+        variation: 0.05
+        volume: 6
+  - type: UseDelay
+    delay: 30.0  # 30 second cooldown
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: Magazine
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+            - PowerCage
+  - type: HitscanBatteryAmmoProvider
+    proto: ApolloBeamHeavy
+    fireCost: 200

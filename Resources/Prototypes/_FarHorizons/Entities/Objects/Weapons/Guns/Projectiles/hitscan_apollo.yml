@@ -1,0 +1,17 @@
+# Apollo Hitscan Beam
+
+- type: hitscan
+  id: ApolloBeamHeavy
+  damage:
+    types:
+      Heat: 90
+      Structural: 555
+  muzzleFlash:
+    sprite: _FarHorizons/Objects/Weapons/Guns/Projectiles/Apollo.rsi
+    state: muzzle_beam_heavy2
+  travelFlash:
+    sprite: _FarHorizons/Objects/Weapons/Guns/Projectiles/Apollo.rsi
+    state: muzzle_beam_heavy2
+  impactFlash:
+    sprite: _FarHorizons/Objects/Weapons/Guns/Projectiles/Apollo.rsi
+    state: muzzle_beam_heavy2

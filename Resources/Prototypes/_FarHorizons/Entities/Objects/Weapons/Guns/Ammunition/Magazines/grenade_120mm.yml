@@ -1,0 +1,60 @@
+# 120mm Grenade Magazines
+
+- type: entity
+  id: BaseMagazineGrenade120mm
+  name: 120mm grenade cartridge
+  parent: [ BaseItem, BaseSecurityContraband ]
+  abstract: true
+  description: A large 120mm grenade cartridge designed for heavy artillery systems.
+  components:
+  - type: Tag
+    tags:
+    - MagazineGrenade120mm
+    - Grenade
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 20
+    soundRack:
+      path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
+      params:
+        variation: 0.05
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
+      params:
+        variation: 0.05
+  - type: Item
+    size: Huge
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-4
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  id: MagazineGrenade120mmEmpty
+  name: 120mm grenade cartridge (empty)
+  parent: BaseMagazineGrenade120mm
+  components:
+  - type: BallisticAmmoProvider
+
+- type: entity
+  id: MagazineGrenade120mmBlast
+  name: 120mm blast grenade cartridge
+  parent: BaseMagazineGrenade120mm
+  description: A 20-round cartridge filled with 120mm blast grenades.
+  components:
+  - type: BallisticAmmoProvider
+    proto: Grenade120mmBlast

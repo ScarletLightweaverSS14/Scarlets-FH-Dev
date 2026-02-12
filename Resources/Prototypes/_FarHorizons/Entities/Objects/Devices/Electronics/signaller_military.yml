@@ -1,0 +1,12 @@
+# Military Remote Signaller
+
+- type: entity
+  parent: RemoteSignallerAdvanced
+  id: RemoteSignallerMilitary
+  name: military remote signaller
+  description: A military-grade handheld device used for remotely sending signals to objects over extremely long distances of up to 200 meters. Features enhanced encryption and signal amplification.
+  components:
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: StaticPrice
+    price: 50
